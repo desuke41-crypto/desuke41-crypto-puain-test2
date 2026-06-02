@@ -3,128 +3,109 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="はてなブログで話題の記事や、編集部が選んだおすすめブログを見つけよう。" />
-    <title>はてなブログ｜毎日の「気になる」を見つけよう</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <meta name="description" content="2023年50歳になる男の日記" />
+    <title>dの日記</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="logo" href="#top" aria-label="はてなブログ ホーム">
-          <span class="logo-mark">B!</span><span>はてなブログ</span>
-        </a>
-        <nav class="main-nav" aria-label="メインメニュー">
-          <a class="active" href="#top">ホーム</a>
-          <a href="#topics">トピックス</a>
-          <a href="#editors">編集部おすすめ</a>
-          <a href="#ranking">ランキング</a>
-        </nav>
-        <div class="header-actions">
-          <button class="icon-button search-toggle" type="button" aria-label="記事を検索" aria-expanded="false">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5.5"></circle><path d="m15 15 5 5"></path></svg>
-          </button>
-          <a class="login" href="#login">ログイン</a>
-          <a class="start-button" href="#start">ブログをはじめる</a>
-        </div>
-        <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
-      </div>
-      <div class="search-panel" aria-hidden="true">
-        <label><span>SEARCH</span><input type="search" placeholder="記事やブログを検索" /></label>
-        <button type="button">検索</button>
-      </div>
+    <div class="hatena-bar">
+      <a class="hatena-logo" href="#">Hatena Blog</a>
+      <a class="subscribe-top" href="#subscribe">読者になる</a>
+    </div>
+
+    <header class="blog-header">
+      <h1><a href="#">dの日記</a></h1>
+      <p>2023年50歳になる男の日記</p>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="section-label">PICK UP <span></span> 2024.06.16</p>
-          <h1>暮らしのすき間に、<br /><em>あたらしい視点</em>を。</h1>
-          <p class="hero-description">日々の発見、考えたこと、好きなもの。<br />誰かの言葉から、まだ知らない世界を見つけよう。</p>
-          <a href="#topics" class="discover-link">記事を見つける <span>↓</span></a>
-        </div>
-        <article class="featured-story">
-          <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?auto=format&fit=crop&w=1300&q=85" alt="湖畔の山小屋と山々" />
-          <div class="featured-body">
-            <p class="card-label">EDITOR'S PICK</p>
-            <h2>湖のほとりで過ごした、<br />何もしない週末のこと</h2>
-            <p>少しだけ遠くへ。時計を見ないで、本を読んだり、散歩をしたり。静かな二日間の記録です。</p>
-            <div class="author"><span class="avatar avatar-green">m</span><span><b>mori_no_kurashi</b><small>森の暮らし帖</small></span></div>
-          </div>
+    <div class="page-layout">
+      <main class="entries" aria-label="記事一覧">
+        <article class="entry">
+          <time datetime="2026-04-11">2026-04-11</time>
+          <h2><a href="#entry-1">デジタルに怒る人を見て思った</a></h2>
+          <a class="category" href="#daily">日常での出来事</a>
+          <p>今日は、ちょっと考えさせられる場面に出くわしました。ビジネスホテルのフロントでのことです。最近はチェックインもタッチパネルで行うのが当たり前になってきていますよね。そこに年配の男性が操作に手こずっていて、フロント受付の人に対して感情的に怒…</p>
+          <div class="entry-footer"><span><a href="#tag"># ジジイ</a>　<a href="#tag"># デジタル難民</a></span><a class="bookmark" href="#bookmark">B!</a></div>
         </article>
-      </section>
 
-      <section class="category-bar" aria-label="記事カテゴリ">
-        <div class="category-inner">
-          <button class="category active" type="button" data-category="all">すべて</button>
-          <button class="category" type="button" data-category="life">暮らし</button>
-          <button class="category" type="button" data-category="food">食べもの</button>
-          <button class="category" type="button" data-category="travel">旅</button>
-          <button class="category" type="button" data-category="culture">カルチャー</button>
-          <button class="category" type="button" data-category="tech">テクノロジー</button>
-          <button class="category" type="button" data-category="work">仕事</button>
-        </div>
-      </section>
+        <article class="entry">
+          <time datetime="2026-04-10">2026-04-10</time>
+          <h2><a href="#entry-2">〖読書〗ストア派に学ぶ、ストレスフルな時代を平然と生きる知恵</a></h2>
+          <a class="category" href="#reading">読書・哲学</a>
+          <p>『心穏やかに生きる哲学：ストア派に学ぶストレスフルな時代を生きる考え方』という本を読み終えました。セネカやマルクス・アウレリウスといった古代の哲学者たちの言葉が引かれた、非常に内容の濃い一冊です。ボリュームがある本を前にすると、どうしても…</p>
+          <div class="entry-footer"><span><a href="#tag"># ストア派</a></span><a class="bookmark" href="#bookmark">B!</a></div>
+        </article>
 
-      <section class="topics section" id="topics">
-        <div class="section-heading">
-          <div><p class="section-label">TOPICS <span></span> 話題の記事</p><h2>いま、読まれている記事</h2></div>
-          <a href="#ranking">ランキングを見る <span>→</span></a>
-        </div>
-        <div class="article-grid">
-          <article class="article-card" data-category="food">
-            <a class="article-image" href="#article"><img src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=85" alt="テーブルに並んだ朝食" /><span>FOOD</span></a>
-            <div class="article-body"><p class="meta">2024.06.15 <i>·</i> 食べもの</p><h3><a href="#article">日曜日の朝に作りたい、焼きたてパンと季節のジャム</a></h3><p class="excerpt">少し早く起きた朝。台所からただよう甘い香りと、小さな幸せについて。</p><div class="card-footer"><div class="author"><span class="avatar avatar-orange">n</span><span><b>natsumi</b><small>小さな食卓</small></span></div><button class="bookmark" type="button" aria-label="記事を保存"><span>♡</span> 128</button></div></div>
-          </article>
-          <article class="article-card" data-category="travel">
-            <a class="article-image" href="#article"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=85" alt="山と湖の風景" /><span>TRAVEL</span></a>
-            <div class="article-body"><p class="meta">2024.06.14 <i>·</i> 旅</p><h3><a href="#article">列車を乗り継いで、初夏の小さな町へ</a></h3><p class="excerpt">目的地をひとつだけ決めて、あとは気の向くままに。二泊三日のひとり旅。</p><div class="card-footer"><div class="author"><span class="avatar avatar-blue">t</span><span><b>tabi_note</b><small>窓辺の旅ノート</small></span></div><button class="bookmark" type="button" aria-label="記事を保存"><span>♡</span> 96</button></div></div>
-          </article>
-          <article class="article-card" data-category="life">
-            <a class="article-image" href="#article"><img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=800&q=85" alt="植物のある明るい部屋" /><span>LIFE</span></a>
-            <div class="article-body"><p class="meta">2024.06.14 <i>·</i> 暮らし</p><h3><a href="#article">ものを減らして気づいた、心地よい部屋のつくり方</a></h3><p class="excerpt">大切なのは、数ではなく余白でした。暮らしを少しずつ整えるためのヒント。</p><div class="card-footer"><div class="author"><span class="avatar avatar-pink">h</span><span><b>hibi_simple</b><small>余白のある日々</small></span></div><button class="bookmark" type="button" aria-label="記事を保存"><span>♡</span> 214</button></div></div>
-          </article>
-          <article class="article-card" data-category="culture">
-            <a class="article-image" href="#article"><img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=85" alt="積み重ねられた本" /><span>BOOKS</span></a>
-            <div class="article-body"><p class="meta">2024.06.13 <i>·</i> カルチャー</p><h3><a href="#article">雨の日に読み返したい、短編小説を5冊選んでみた</a></h3><p class="excerpt">窓を打つ雨音を聞きながら、ゆっくりページをめくりたい物語たち。</p><div class="card-footer"><div class="author"><span class="avatar avatar-purple">k</span><span><b>kotoribooks</b><small>ことり文庫</small></span></div><button class="bookmark" type="button" aria-label="記事を保存"><span>♡</span> 172</button></div></div>
-          </article>
-          <article class="article-card" data-category="tech">
-            <a class="article-image" href="#article"><img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=85" alt="机の上のノートパソコン" /><span>TECH</span></a>
-            <div class="article-body"><p class="meta">2024.06.12 <i>·</i> テクノロジー</p><h3><a href="#article">個人開発を一年続けてわかった、作ることの楽しさ</a></h3><p class="excerpt">小さく始めて、毎日少しだけ手を動かす。完成までに学んだことの記録。</p><div class="card-footer"><div class="author"><span class="avatar avatar-navy">s</span><span><b>suzuki_dev</b><small>コードと散歩</small></span></div><button class="bookmark" type="button" aria-label="記事を保存"><span>♡</span> 88</button></div></div>
-          </article>
-          <article class="article-card" data-category="work">
-            <a class="article-image" href="#article"><img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=85" alt="光が入るワークスペース" /><span>WORK</span></a>
-            <div class="article-body"><p class="meta">2024.06.11 <i>·</i> 仕事</p><h3><a href="#article">働く場所を変えたら、時間の使い方も変わった</a></h3><p class="excerpt">新しい環境で見つけた、自分らしく働くための小さなルール。</p><div class="card-footer"><div class="author"><span class="avatar avatar-yellow">a</span><span><b>ao_work</b><small>はたらく日記</small></span></div><button class="bookmark" type="button" aria-label="記事を保存"><span>♡</span> 64</button></div></div>
-          </article>
-        </div>
-        <button class="more-button" type="button">もっと記事を読む <span>＋</span></button>
-      </section>
+        <article class="entry">
+          <time datetime="2026-04-09">2026-04-09</time>
+          <h2><a href="#entry-3">〖読書〗スマホ時代の哲学完読 第6章を読んで。スマホがくれる「柔らかな昏睡」と、そこから抜けるための小さな裂け目</a></h2>
+          <a class="category" href="#reading">読書・哲学</a>
+          <p>◇不安を乗り切るための、2つのやり方。生きていると、これは本当に自分のやりたいことなのか？そんな不安定な感覚に襲われることがある。不安をやり過ごす方法は大きく2つあるということだ。ひとつは、自己啓発的なロジックを自分に当てはめて、考え方をポ…</p>
+          <div class="entry-footer"><span><a href="#tag"># スマホ時代の哲学</a></span><a class="bookmark" href="#bookmark">B!</a></div>
+        </article>
 
-      <section class="editors section" id="editors">
-        <div class="section-heading"><div><p class="section-label">EDITOR'S SELECTION <span></span> 編集部おすすめ</p><h2>とっておきの読みもの</h2></div></div>
-        <div class="selection-grid">
-          <a href="#article" class="selection-main"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=85" alt="朝日に照らされた山々" /><div><p>WEEKEND STORY</p><h3>山の朝、珈琲を淹れる。<br />静けさの中で考えたこと</h3><span>続きを読む →</span></div></a>
-          <div class="selection-side">
-            <a href="#article"><img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=400&q=85" alt="手帳とペン" /><span><small>ESSAY</small><b>手帳に書くことで、毎日を少し好きになる</b><em>文房具と暮らし</em></span></a>
-            <a href="#article"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=400&q=85" alt="テーブルの上のコーヒー" /><span><small>LIFE</small><b>いつもの喫茶店で過ごす、土曜日の午後</b><em>街角の記憶</em></span></a>
-            <a href="#article"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=400&q=85" alt="庭のある家" /><span><small>HOME</small><b>古い家を手直ししながら暮らしています</b><em>家と庭のノート</em></span></a>
-          </div>
-        </div>
-      </section>
+        <article class="entry">
+          <time datetime="2026-04-08">2026-04-08</time>
+          <h2><a href="#entry-4">ハイブリッド回線と人間ドック</a></h2>
+          <a class="category" href="#daily">日常での出来事</a>
+          <p>今月から、自宅のインターネット光回線を変更しました！きっかけは家電量販店でのポイント贈呈。お得感満載の裏に、手続きの時間や設定に解約などなど…見方によってはポイント額以上の、人生時間と能力を消費されているとも言えるんですよね。機器の接続や…</p>
+          <div class="entry-footer"><span></span><a class="bookmark" href="#bookmark">B!</a></div>
+        </article>
 
-      <section class="newsletter">
-        <div><p class="section-label">WEEKLY LETTER</p><h2>今週のおすすめを、<br />メールでお届けします。</h2><p>はてなブログ編集部が選んだ読みものを、毎週金曜日にお届け。</p></div>
-        <form><label class="sr-only" for="email">メールアドレス</label><input id="email" type="email" placeholder="メールアドレスを入力" required /><button type="submit">登録する <span>→</span></button></form>
-      </section>
-    </main>
+        <article class="entry">
+          <time datetime="2026-04-07">2026-04-07</time>
+          <h2><a href="#entry-5">封鎖された県庁前と、あの人たちのエネルギー</a></h2>
+          <a class="category" href="#daily">日常での出来事</a>
+          <p>昨日、天皇陛下が福島に来られたということで、福島駅周辺の警備体制は本当にすごかったです。事前に周知があり、ある程度は聞いていたものの、実際に目にするとその規模感に圧倒されましたね。国道は規制され、特に県庁周辺は完全に封鎖。時間帯によって…</p>
+          <div class="entry-footer"><span></span><a class="bookmark" href="#bookmark">B!</a></div>
+        </article>
 
-    <footer>
-      <a class="logo" href="#top"><span class="logo-mark">B!</span><span>はてなブログ</span></a>
-      <div><a href="#about">はてなブログとは</a><a href="#guide">使い方ガイド</a><a href="#contact">お問い合わせ</a><a href="#terms">利用規約</a></div>
-      <small>© Hatena Blog</small>
-    </footer>
+        <article class="entry">
+          <time datetime="2026-04-06">2026-04-06</time>
+          <h2><a href="#entry-6">過去は変えられないが、どう使うかは今の自分次第</a></h2>
+          <a class="category" href="#daily">日常での出来事</a>
+          <p>昨夜の夢。たまに見るんですけど、前の仕事の営業所内でのやり取りを久々に見ました。ロッカーの前で着替えていて、車を扱う仕事だったので、配車確認の電話をしたり、季節物の車両を引き上げる段取りをしたり、そういった場面でした。少ない人数の営業所…</p>
+          <div class="entry-footer"><span></span><a class="bookmark" href="#bookmark">B!</a></div>
+        </article>
+
+        <article class="entry">
+          <time datetime="2026-04-05">2026-04-05</time>
+          <h2><a href="#entry-7">〖読書〗 『スマホ時代の哲学』第5章を読んで。没頭と退屈の関係。</a></h2>
+          <a class="category" href="#reading">読書・哲学</a>
+          <p>「没頭」という言葉に対して、少し立ち止まるような指摘がありました。これまで章を読み、趣味に没頭することは良いことだと思っていましたし、むしろ積極的にやるべきだと考えていた側です。しかし「没頭」が、必ずしも健全とは限らないという視点には、…</p>
+          <div class="entry-footer"><span></span><a class="bookmark" href="#bookmark">B!</a></div>
+        </article>
+        <a class="next-page" href="#next">次のページ</a>
+      </main>
+
+      <aside class="sidebar">
+        <section class="side-section profile">
+          <h3>プロフィール</h3>
+          <div class="profile-row"><div class="avatar">d</div><div><a href="#profile">id:desuke41</a><small>はてなブログPro</small></div></div>
+          <button id="subscribe" class="subscribe" type="button">読者になる</button>
+          <a class="about" href="#about">このブログについて</a>
+        </section>
+        <section class="side-section search">
+          <h3>検索</h3>
+          <form><input aria-label="ブログ内検索" type="search" /><button aria-label="検索" type="submit">⌕</button></form>
+        </section>
+        <section class="side-section">
+          <h3>リンク</h3>
+          <ul><li><a href="#">はてなブログ</a></li><li><a href="#">ブログをはじめる</a></li><li><a href="#">週刊はてなブログ</a></li><li><a href="#">はてなブログPro</a></li></ul>
+        </section>
+        <section class="side-section">
+          <h3>最新記事</h3>
+          <ul class="recent"><li><a href="#entry-1">デジタルに怒る人を見て思った</a></li><li><a href="#entry-2">〖読書〗ストア派に学ぶ、ストレスフルな時代を平然と生きる知恵</a></li><li><a href="#entry-3">〖読書〗スマホ時代の哲学完読 第6章を読んで。</a></li><li><a href="#entry-4">ハイブリッド回線と人間ドック</a></li><li><a href="#entry-5">封鎖された県庁前と、あの人たちのエネルギー</a></li></ul>
+        </section>
+        <section class="side-section archives">
+          <h3>月別アーカイブ</h3>
+          <details open><summary>2026</summary><a href="#">2026 / 4</a><a href="#">2026 / 3</a><a href="#">2026 / 2</a><a href="#">2026 / 1</a></details>
+          <details><summary>2025</summary></details><details><summary>2024</summary></details><details><summary>2023</summary></details><details><summary>2022</summary></details><details><summary>2021</summary></details><details><summary>2020</summary></details><details><summary>2019</summary></details><details><summary>2018</summary></details><details><summary>2017</summary></details><details><summary>2016</summary></details><details><summary>2015</summary></details><details><summary>2014</summary></details><details><summary>2013</summary></details><details><summary>2012</summary></details><details><summary>2011</summary></details><details><summary>2010</summary></details>
+        </section>
+      </aside>
+    </div>
+
+    <footer><a href="#">dの日記</a><p>Powered by <a href="#">Hatena Blog</a> | <a href="#">ブログを報告する</a></p></footer>
     <script src="script.js"></script>
   </body>
 </html>
