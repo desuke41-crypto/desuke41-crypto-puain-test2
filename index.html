@@ -3,109 +3,191 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="2023年50歳になる男の日記" />
-    <title>dの日記</title>
+    <meta
+      name="description"
+      content="はてなブログにあるさまざまなブログをカテゴリやキーワードから探せる一覧ページです。"
+    />
+    <title>はてなブログ一覧｜読みたいブログを見つける</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="hatena-bar">
-      <a class="hatena-logo" href="#">Hatena Blog</a>
-      <a class="subscribe-top" href="#subscribe">読者になる</a>
-    </div>
-
-    <header class="blog-header">
-      <h1><a href="#">dの日記</a></h1>
-      <p>2023年50歳になる男の日記</p>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="はてなブログ一覧 ホーム">
+          <span class="brand-mark">B!</span>
+          <span>はてなブログ一覧</span>
+        </a>
+        <nav class="global-nav" aria-label="メインメニュー">
+          <a href="#blogs">ブログ一覧</a>
+          <a href="#categories">カテゴリ</a>
+          <a href="#ranking">注目</a>
+        </nav>
+        <a class="start-link" href="#start">ブログをはじめる</a>
+      </div>
     </header>
 
-    <div class="page-layout">
-      <main class="entries" aria-label="記事一覧">
-        <article class="entry">
-          <time datetime="2026-04-11">2026-04-11</time>
-          <h2><a href="#entry-1">デジタルに怒る人を見て思った</a></h2>
-          <a class="category" href="#daily">日常での出来事</a>
-          <p>今日は、ちょっと考えさせられる場面に出くわしました。ビジネスホテルのフロントでのことです。最近はチェックインもタッチパネルで行うのが当たり前になってきていますよね。そこに年配の男性が操作に手こずっていて、フロント受付の人に対して感情的に怒…</p>
-          <div class="entry-footer"><span><a href="#tag"># ジジイ</a>　<a href="#tag"># デジタル難民</a></span><a class="bookmark" href="#bookmark">B!</a></div>
-        </article>
+    <main id="top">
+      <section class="hero">
+        <p class="eyebrow">Hatena Blog Directory</p>
+        <h1>読みたいブログを、<br />一覧から見つけよう。</h1>
+        <p>
+          暮らし、読書、旅、テクノロジー、仕事。はてなブログにありそうな多様なテーマを、
+          サンプルの一覧ページとして見やすく整理しました。
+        </p>
+      </section>
 
-        <article class="entry">
-          <time datetime="2026-04-10">2026-04-10</time>
-          <h2><a href="#entry-2">〖読書〗ストア派に学ぶ、ストレスフルな時代を平然と生きる知恵</a></h2>
-          <a class="category" href="#reading">読書・哲学</a>
-          <p>『心穏やかに生きる哲学：ストア派に学ぶストレスフルな時代を生きる考え方』という本を読み終えました。セネカやマルクス・アウレリウスといった古代の哲学者たちの言葉が引かれた、非常に内容の濃い一冊です。ボリュームがある本を前にすると、どうしても…</p>
-          <div class="entry-footer"><span><a href="#tag"># ストア派</a></span><a class="bookmark" href="#bookmark">B!</a></div>
-        </article>
+      <section class="controls" aria-label="ブログ検索と絞り込み">
+        <form class="search-form" role="search">
+          <label for="blog-search">キーワードで探す</label>
+          <div>
+            <input id="blog-search" type="search" placeholder="例：読書、旅、料理" />
+            <button type="submit">検索</button>
+          </div>
+        </form>
+        <div class="category-filter" id="categories" aria-label="カテゴリで絞り込む">
+          <button class="filter-button is-active" type="button" data-category="all">すべて</button>
+          <button class="filter-button" type="button" data-category="life">暮らし</button>
+          <button class="filter-button" type="button" data-category="reading">読書</button>
+          <button class="filter-button" type="button" data-category="travel">旅</button>
+          <button class="filter-button" type="button" data-category="tech">テック</button>
+          <button class="filter-button" type="button" data-category="work">仕事</button>
+        </div>
+      </section>
 
-        <article class="entry">
-          <time datetime="2026-04-09">2026-04-09</time>
-          <h2><a href="#entry-3">〖読書〗スマホ時代の哲学完読 第6章を読んで。スマホがくれる「柔らかな昏睡」と、そこから抜けるための小さな裂け目</a></h2>
-          <a class="category" href="#reading">読書・哲学</a>
-          <p>◇不安を乗り切るための、2つのやり方。生きていると、これは本当に自分のやりたいことなのか？そんな不安定な感覚に襲われることがある。不安をやり過ごす方法は大きく2つあるということだ。ひとつは、自己啓発的なロジックを自分に当てはめて、考え方をポ…</p>
-          <div class="entry-footer"><span><a href="#tag"># スマホ時代の哲学</a></span><a class="bookmark" href="#bookmark">B!</a></div>
-        </article>
+      <section class="directory" id="blogs">
+        <div class="section-heading">
+          <p class="eyebrow">Blog List</p>
+          <h2>ブログ一覧</h2>
+          <p id="result-count" aria-live="polite">8件のブログを表示しています</p>
+        </div>
 
-        <article class="entry">
-          <time datetime="2026-04-08">2026-04-08</time>
-          <h2><a href="#entry-4">ハイブリッド回線と人間ドック</a></h2>
-          <a class="category" href="#daily">日常での出来事</a>
-          <p>今月から、自宅のインターネット光回線を変更しました！きっかけは家電量販店でのポイント贈呈。お得感満載の裏に、手続きの時間や設定に解約などなど…見方によってはポイント額以上の、人生時間と能力を消費されているとも言えるんですよね。機器の接続や…</p>
-          <div class="entry-footer"><span></span><a class="bookmark" href="#bookmark">B!</a></div>
-        </article>
+        <div class="blog-grid">
+          <article class="blog-card" data-category="life" data-keywords="暮らし 家事 日記">
+            <div class="blog-icon">暮</div>
+            <div class="blog-body">
+              <span class="category-label">暮らし</span>
+              <h3><a href="#blog-life-note">毎日の小さな記録</a></h3>
+              <p>家事、買いもの、散歩、季節のこと。日々の気づきを短い文章で残すブログ。</p>
+              <dl>
+                <div><dt>更新</dt><dd>週3回</dd></div>
+                <div><dt>読者</dt><dd>1,240人</dd></div>
+              </dl>
+            </div>
+          </article>
 
-        <article class="entry">
-          <time datetime="2026-04-07">2026-04-07</time>
-          <h2><a href="#entry-5">封鎖された県庁前と、あの人たちのエネルギー</a></h2>
-          <a class="category" href="#daily">日常での出来事</a>
-          <p>昨日、天皇陛下が福島に来られたということで、福島駅周辺の警備体制は本当にすごかったです。事前に周知があり、ある程度は聞いていたものの、実際に目にするとその規模感に圧倒されましたね。国道は規制され、特に県庁周辺は完全に封鎖。時間帯によって…</p>
-          <div class="entry-footer"><span></span><a class="bookmark" href="#bookmark">B!</a></div>
-        </article>
+          <article class="blog-card" data-category="reading" data-keywords="読書 本 哲学 書評">
+            <div class="blog-icon">読</div>
+            <div class="blog-body">
+              <span class="category-label">読書</span>
+              <h3><a href="#blog-reading">本棚の余白</a></h3>
+              <p>読んだ本のメモ、気になった一節、次に読みたい本をまとめる読書ログ。</p>
+              <dl>
+                <div><dt>更新</dt><dd>週1回</dd></div>
+                <div><dt>読者</dt><dd>890人</dd></div>
+              </dl>
+            </div>
+          </article>
 
-        <article class="entry">
-          <time datetime="2026-04-06">2026-04-06</time>
-          <h2><a href="#entry-6">過去は変えられないが、どう使うかは今の自分次第</a></h2>
-          <a class="category" href="#daily">日常での出来事</a>
-          <p>昨夜の夢。たまに見るんですけど、前の仕事の営業所内でのやり取りを久々に見ました。ロッカーの前で着替えていて、車を扱う仕事だったので、配車確認の電話をしたり、季節物の車両を引き上げる段取りをしたり、そういった場面でした。少ない人数の営業所…</p>
-          <div class="entry-footer"><span></span><a class="bookmark" href="#bookmark">B!</a></div>
-        </article>
+          <article class="blog-card" data-category="travel" data-keywords="旅 街歩き 写真">
+            <div class="blog-icon">旅</div>
+            <div class="blog-body">
+              <span class="category-label">旅</span>
+              <h3><a href="#blog-travel">週末、知らない町へ</a></h3>
+              <p>電車旅、ローカル線、喫茶店めぐり。週末に訪れた町の空気を写真と文章で紹介。</p>
+              <dl>
+                <div><dt>更新</dt><dd>月2回</dd></div>
+                <div><dt>読者</dt><dd>2,030人</dd></div>
+              </dl>
+            </div>
+          </article>
 
-        <article class="entry">
-          <time datetime="2026-04-05">2026-04-05</time>
-          <h2><a href="#entry-7">〖読書〗 『スマホ時代の哲学』第5章を読んで。没頭と退屈の関係。</a></h2>
-          <a class="category" href="#reading">読書・哲学</a>
-          <p>「没頭」という言葉に対して、少し立ち止まるような指摘がありました。これまで章を読み、趣味に没頭することは良いことだと思っていましたし、むしろ積極的にやるべきだと考えていた側です。しかし「没頭」が、必ずしも健全とは限らないという視点には、…</p>
-          <div class="entry-footer"><span></span><a class="bookmark" href="#bookmark">B!</a></div>
-        </article>
-        <a class="next-page" href="#next">次のページ</a>
-      </main>
+          <article class="blog-card" data-category="tech" data-keywords="テック プログラミング ガジェット">
+            <div class="blog-icon">技</div>
+            <div class="blog-body">
+              <span class="category-label">テック</span>
+              <h3><a href="#blog-tech">手を動かす開発メモ</a></h3>
+              <p>小さな実装の学び、便利なツール、ガジェットの使用感をまとめる技術ブログ。</p>
+              <dl>
+                <div><dt>更新</dt><dd>週2回</dd></div>
+                <div><dt>読者</dt><dd>3,410人</dd></div>
+              </dl>
+            </div>
+          </article>
 
-      <aside class="sidebar">
-        <section class="side-section profile">
-          <h3>プロフィール</h3>
-          <div class="profile-row"><div class="avatar">d</div><div><a href="#profile">id:desuke41</a><small>はてなブログPro</small></div></div>
-          <button id="subscribe" class="subscribe" type="button">読者になる</button>
-          <a class="about" href="#about">このブログについて</a>
-        </section>
-        <section class="side-section search">
-          <h3>検索</h3>
-          <form><input aria-label="ブログ内検索" type="search" /><button aria-label="検索" type="submit">⌕</button></form>
-        </section>
-        <section class="side-section">
-          <h3>リンク</h3>
-          <ul><li><a href="#">はてなブログ</a></li><li><a href="#">ブログをはじめる</a></li><li><a href="#">週刊はてなブログ</a></li><li><a href="#">はてなブログPro</a></li></ul>
-        </section>
-        <section class="side-section">
-          <h3>最新記事</h3>
-          <ul class="recent"><li><a href="#entry-1">デジタルに怒る人を見て思った</a></li><li><a href="#entry-2">〖読書〗ストア派に学ぶ、ストレスフルな時代を平然と生きる知恵</a></li><li><a href="#entry-3">〖読書〗スマホ時代の哲学完読 第6章を読んで。</a></li><li><a href="#entry-4">ハイブリッド回線と人間ドック</a></li><li><a href="#entry-5">封鎖された県庁前と、あの人たちのエネルギー</a></li></ul>
-        </section>
-        <section class="side-section archives">
-          <h3>月別アーカイブ</h3>
-          <details open><summary>2026</summary><a href="#">2026 / 4</a><a href="#">2026 / 3</a><a href="#">2026 / 2</a><a href="#">2026 / 1</a></details>
-          <details><summary>2025</summary></details><details><summary>2024</summary></details><details><summary>2023</summary></details><details><summary>2022</summary></details><details><summary>2021</summary></details><details><summary>2020</summary></details><details><summary>2019</summary></details><details><summary>2018</summary></details><details><summary>2017</summary></details><details><summary>2016</summary></details><details><summary>2015</summary></details><details><summary>2014</summary></details><details><summary>2013</summary></details><details><summary>2012</summary></details><details><summary>2011</summary></details><details><summary>2010</summary></details>
-        </section>
+          <article class="blog-card" data-category="work" data-keywords="仕事 キャリア 働き方">
+            <div class="blog-icon">働</div>
+            <div class="blog-body">
+              <span class="category-label">仕事</span>
+              <h3><a href="#blog-work">働き方のノート</a></h3>
+              <p>チームづくり、会議、キャリアの悩みなど、働く日々を振り返るブログ。</p>
+              <dl>
+                <div><dt>更新</dt><dd>隔週</dd></div>
+                <div><dt>読者</dt><dd>760人</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="blog-card" data-category="life" data-keywords="料理 食卓 レシピ 暮らし">
+            <div class="blog-icon">食</div>
+            <div class="blog-body">
+              <span class="category-label">暮らし</span>
+              <h3><a href="#blog-food">今日の食卓帖</a></h3>
+              <p>平日の夕飯、休日の作り置き、台所道具のことをやさしく記録するブログ。</p>
+              <dl>
+                <div><dt>更新</dt><dd>週4回</dd></div>
+                <div><dt>読者</dt><dd>1,560人</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="blog-card" data-category="reading" data-keywords="映画 音楽 カルチャー 読書">
+            <div class="blog-icon">文</div>
+            <div class="blog-body">
+              <span class="category-label">読書</span>
+              <h3><a href="#blog-culture">夜更けのカルチャーメモ</a></h3>
+              <p>本、映画、音楽、展示。週末に触れたカルチャーをゆっくり振り返ります。</p>
+              <dl>
+                <div><dt>更新</dt><dd>週1回</dd></div>
+                <div><dt>読者</dt><dd>1,120人</dd></div>
+              </dl>
+            </div>
+          </article>
+
+          <article class="blog-card" data-category="tech" data-keywords="AI ツール 生産性 テック">
+            <div class="blog-icon">AI</div>
+            <div class="blog-body">
+              <span class="category-label">テック</span>
+              <h3><a href="#blog-ai">新しい道具箱</a></h3>
+              <p>AIツール、ノートアプリ、自動化など、毎日を少し楽にする道具を試すブログ。</p>
+              <dl>
+                <div><dt>更新</dt><dd>週2回</dd></div>
+                <div><dt>読者</dt><dd>2,680人</dd></div>
+              </dl>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <aside class="ranking" id="ranking" aria-label="注目のテーマ">
+        <div>
+          <p class="eyebrow">Featured Themes</p>
+          <h2>注目のテーマ</h2>
+        </div>
+        <ul>
+          <li><a href="#categories">読書記録</a></li>
+          <li><a href="#categories">週末旅</a></li>
+          <li><a href="#categories">暮らしの道具</a></li>
+          <li><a href="#categories">開発メモ</a></li>
+          <li><a href="#categories">働き方</a></li>
+        </ul>
       </aside>
-    </div>
+    </main>
 
-    <footer><a href="#">dの日記</a><p>Powered by <a href="#">Hatena Blog</a> | <a href="#">ブログを報告する</a></p></footer>
+    <footer class="site-footer" id="start">
+      <p>このページは、特定の個人ブログではなく、はてなブログ一覧を想定した静的サンプルです。</p>
+      <a href="#top">ページ上部へ戻る</a>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>

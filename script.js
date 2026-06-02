@@ -1,19 +1,45 @@
-const subscribeButtons = document.querySelectorAll('.subscribe, .subscribe-top');
+const filterButtons = document.querySelectorAll('.filter-button');
+const blogCards = document.querySelectorAll('.blog-card');
+const searchForm = document.querySelector('.search-form');
+const searchInput = document.querySelector('#blog-search');
+const resultCount = document.querySelector('#result-count');
+let selectedCategory = 'all';
+let searchTerm = '';
 
-subscribeButtons.forEach((button) => {
-  button.addEventListener('click', (event) => {
-    event.preventDefault();
-    const isFollowing = button.classList.toggle('is-following');
-    document.querySelectorAll('.subscribe').forEach((item) => {
-      item.classList.toggle('is-following', isFollowing);
-      item.textContent = isFollowing ? '読者です' : '読者になる';
-    });
-    document.querySelectorAll('.subscribe-top').forEach((item) => {
-      item.textContent = isFollowing ? '読者です' : '読者になる';
-    });
+const updateResults = () => {
+  let visibleCount = 0;
+
+  blogCards.forEach((card) => {
+    const matchesCategory = selectedCategory === 'all' || card.dataset.category === selectedCategory;
+    const searchableText = `${card.textContent} ${card.dataset.keywords}`.toLowerCase();
+    const matchesSearch = searchableText.includes(searchTerm.toLowerCase());
+    const isVisible = matchesCategory && matchesSearch;
+
+    card.classList.toggle('is-hidden', !isVisible);
+    if (isVisible) visibleCount += 1;
+  });
+
+  if (resultCount) {
+    resultCount.textContent = `${visibleCount}件のブログを表示しています`;
+  }
+};
+
+filterButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    filterButtons.forEach((item) => item.classList.remove('is-active'));
+    button.classList.add('is-active');
+    selectedCategory = button.dataset.category;
+    updateResults();
   });
 });
 
-document.querySelector('.search form')?.addEventListener('submit', (event) => {
+searchForm?.addEventListener('submit', (event) => {
   event.preventDefault();
+  searchTerm = searchInput?.value.trim() ?? '';
+  updateResults();
+});
+
+searchInput?.addEventListener('input', () => {
+  searchTerm = searchInput.value.trim();
+  updateResults();
 });
