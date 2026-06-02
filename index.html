@@ -5,186 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="はてなブログにあるさまざまなブログをカテゴリやキーワードから探せる一覧ページです。"
+      content="自分のはてなブログに投稿した全記事を、検索・年月・カテゴリで探せる記事一覧サイトです。"
     />
-    <title>はてなブログ一覧｜読みたいブログを見つける</title>
+    <title>私のはてなブログ全記事一覧</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="#top" aria-label="はてなブログ一覧 ホーム">
+        <a class="brand" href="#top" aria-label="私のはてなブログ全記事一覧 ホーム">
           <span class="brand-mark">B!</span>
-          <span>はてなブログ一覧</span>
+          <span>私のはてなブログ全記事一覧</span>
         </a>
         <nav class="global-nav" aria-label="メインメニュー">
-          <a href="#blogs">ブログ一覧</a>
-          <a href="#categories">カテゴリ</a>
-          <a href="#ranking">注目</a>
+          <a href="#articles">記事一覧</a>
+          <a href="#setup">読み込み設定</a>
+          <a href="#about">使い方</a>
         </nav>
-        <a class="start-link" href="#start">ブログをはじめる</a>
       </div>
     </header>
 
     <main id="top">
       <section class="hero">
-        <p class="eyebrow">Hatena Blog Directory</p>
-        <h1>読みたいブログを、<br />一覧から見つけよう。</h1>
-        <p>
-          暮らし、読書、旅、テクノロジー、仕事。はてなブログにありそうな多様なテーマを、
-          サンプルの一覧ページとして見やすく整理しました。
-        </p>
-      </section>
-
-      <section class="controls" aria-label="ブログ検索と絞り込み">
-        <form class="search-form" role="search">
-          <label for="blog-search">キーワードで探す</label>
-          <div>
-            <input id="blog-search" type="search" placeholder="例：読書、旅、料理" />
-            <button type="submit">検索</button>
-          </div>
-        </form>
-        <div class="category-filter" id="categories" aria-label="カテゴリで絞り込む">
-          <button class="filter-button is-active" type="button" data-category="all">すべて</button>
-          <button class="filter-button" type="button" data-category="life">暮らし</button>
-          <button class="filter-button" type="button" data-category="reading">読書</button>
-          <button class="filter-button" type="button" data-category="travel">旅</button>
-          <button class="filter-button" type="button" data-category="tech">テック</button>
-          <button class="filter-button" type="button" data-category="work">仕事</button>
+        <div class="hero-copy">
+          <p class="eyebrow">My Hatena Blog Archive</p>
+          <h1>自分のはてなブログを、<br />全記事一覧で見返せる。</h1>
+          <p>
+            記事タイトル・本文抜粋・カテゴリ・公開年月から、過去の記事をすばやく探せる静的サイトです。
+            RSS URLを入力して読み込むか、<code>script.js</code> の記事データに全記事を登録して使えます。
+          </p>
+        </div>
+        <div class="summary-card" aria-live="polite">
+          <span>表示中の記事</span>
+          <strong id="visible-count">0</strong>
+          <small id="total-count">全0件</small>
         </div>
       </section>
 
-      <section class="directory" id="blogs">
-        <div class="section-heading">
-          <p class="eyebrow">Blog List</p>
-          <h2>ブログ一覧</h2>
-          <p id="result-count" aria-live="polite">8件のブログを表示しています</p>
-        </div>
-
-        <div class="blog-grid">
-          <article class="blog-card" data-category="life" data-keywords="暮らし 家事 日記">
-            <div class="blog-icon">暮</div>
-            <div class="blog-body">
-              <span class="category-label">暮らし</span>
-              <h3><a href="#blog-life-note">毎日の小さな記録</a></h3>
-              <p>家事、買いもの、散歩、季節のこと。日々の気づきを短い文章で残すブログ。</p>
-              <dl>
-                <div><dt>更新</dt><dd>週3回</dd></div>
-                <div><dt>読者</dt><dd>1,240人</dd></div>
-              </dl>
-            </div>
-          </article>
-
-          <article class="blog-card" data-category="reading" data-keywords="読書 本 哲学 書評">
-            <div class="blog-icon">読</div>
-            <div class="blog-body">
-              <span class="category-label">読書</span>
-              <h3><a href="#blog-reading">本棚の余白</a></h3>
-              <p>読んだ本のメモ、気になった一節、次に読みたい本をまとめる読書ログ。</p>
-              <dl>
-                <div><dt>更新</dt><dd>週1回</dd></div>
-                <div><dt>読者</dt><dd>890人</dd></div>
-              </dl>
-            </div>
-          </article>
-
-          <article class="blog-card" data-category="travel" data-keywords="旅 街歩き 写真">
-            <div class="blog-icon">旅</div>
-            <div class="blog-body">
-              <span class="category-label">旅</span>
-              <h3><a href="#blog-travel">週末、知らない町へ</a></h3>
-              <p>電車旅、ローカル線、喫茶店めぐり。週末に訪れた町の空気を写真と文章で紹介。</p>
-              <dl>
-                <div><dt>更新</dt><dd>月2回</dd></div>
-                <div><dt>読者</dt><dd>2,030人</dd></div>
-              </dl>
-            </div>
-          </article>
-
-          <article class="blog-card" data-category="tech" data-keywords="テック プログラミング ガジェット">
-            <div class="blog-icon">技</div>
-            <div class="blog-body">
-              <span class="category-label">テック</span>
-              <h3><a href="#blog-tech">手を動かす開発メモ</a></h3>
-              <p>小さな実装の学び、便利なツール、ガジェットの使用感をまとめる技術ブログ。</p>
-              <dl>
-                <div><dt>更新</dt><dd>週2回</dd></div>
-                <div><dt>読者</dt><dd>3,410人</dd></div>
-              </dl>
-            </div>
-          </article>
-
-          <article class="blog-card" data-category="work" data-keywords="仕事 キャリア 働き方">
-            <div class="blog-icon">働</div>
-            <div class="blog-body">
-              <span class="category-label">仕事</span>
-              <h3><a href="#blog-work">働き方のノート</a></h3>
-              <p>チームづくり、会議、キャリアの悩みなど、働く日々を振り返るブログ。</p>
-              <dl>
-                <div><dt>更新</dt><dd>隔週</dd></div>
-                <div><dt>読者</dt><dd>760人</dd></div>
-              </dl>
-            </div>
-          </article>
-
-          <article class="blog-card" data-category="life" data-keywords="料理 食卓 レシピ 暮らし">
-            <div class="blog-icon">食</div>
-            <div class="blog-body">
-              <span class="category-label">暮らし</span>
-              <h3><a href="#blog-food">今日の食卓帖</a></h3>
-              <p>平日の夕飯、休日の作り置き、台所道具のことをやさしく記録するブログ。</p>
-              <dl>
-                <div><dt>更新</dt><dd>週4回</dd></div>
-                <div><dt>読者</dt><dd>1,560人</dd></div>
-              </dl>
-            </div>
-          </article>
-
-          <article class="blog-card" data-category="reading" data-keywords="映画 音楽 カルチャー 読書">
-            <div class="blog-icon">文</div>
-            <div class="blog-body">
-              <span class="category-label">読書</span>
-              <h3><a href="#blog-culture">夜更けのカルチャーメモ</a></h3>
-              <p>本、映画、音楽、展示。週末に触れたカルチャーをゆっくり振り返ります。</p>
-              <dl>
-                <div><dt>更新</dt><dd>週1回</dd></div>
-                <div><dt>読者</dt><dd>1,120人</dd></div>
-              </dl>
-            </div>
-          </article>
-
-          <article class="blog-card" data-category="tech" data-keywords="AI ツール 生産性 テック">
-            <div class="blog-icon">AI</div>
-            <div class="blog-body">
-              <span class="category-label">テック</span>
-              <h3><a href="#blog-ai">新しい道具箱</a></h3>
-              <p>AIツール、ノートアプリ、自動化など、毎日を少し楽にする道具を試すブログ。</p>
-              <dl>
-                <div><dt>更新</dt><dd>週2回</dd></div>
-                <div><dt>読者</dt><dd>2,680人</dd></div>
-              </dl>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <aside class="ranking" id="ranking" aria-label="注目のテーマ">
+      <section class="setup-panel" id="setup" aria-labelledby="setup-title">
         <div>
-          <p class="eyebrow">Featured Themes</p>
-          <h2>注目のテーマ</h2>
+          <p class="eyebrow">Load Articles</p>
+          <h2 id="setup-title">あなたのブログ記事を読み込む</h2>
+          <p>
+            はてなブログのURL、またはRSS URLを入力してください。RSSで取得できない場合は、
+            <code>script.js</code> の <code>manualArticles</code> に記事データを貼り付けると全記事一覧として表示できます。
+          </p>
         </div>
-        <ul>
-          <li><a href="#categories">読書記録</a></li>
-          <li><a href="#categories">週末旅</a></li>
-          <li><a href="#categories">暮らしの道具</a></li>
-          <li><a href="#categories">開発メモ</a></li>
-          <li><a href="#categories">働き方</a></li>
-        </ul>
-      </aside>
+        <form class="feed-form">
+          <label for="feed-url">ブログURL / RSS URL</label>
+          <div>
+            <input id="feed-url" type="url" placeholder="https://example.hatenablog.com/ または https://example.hatenablog.com/rss" />
+            <button type="submit">読み込む</button>
+          </div>
+          <p class="feed-status" id="feed-status" aria-live="polite">まだ記事データは読み込まれていません。</p>
+        </form>
+      </section>
+
+      <section class="filters" aria-label="記事の検索と絞り込み">
+        <form class="search-form" role="search">
+          <label for="article-search">キーワード検索</label>
+          <input id="article-search" type="search" placeholder="タイトル・本文・カテゴリを検索" />
+        </form>
+        <label>
+          年月
+          <select id="month-filter">
+            <option value="all">すべての年月</option>
+          </select>
+        </label>
+        <label>
+          カテゴリ
+          <select id="category-filter">
+            <option value="all">すべてのカテゴリ</option>
+          </select>
+        </label>
+        <label>
+          並び順
+          <select id="sort-order">
+            <option value="newest">新しい順</option>
+            <option value="oldest">古い順</option>
+            <option value="title">タイトル順</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="article-section" id="articles" aria-labelledby="articles-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">All Posts</p>
+            <h2 id="articles-title">記事一覧</h2>
+          </div>
+          <button class="clear-button" type="button">絞り込みをリセット</button>
+        </div>
+        <div class="empty-state" id="empty-state">
+          <h3>記事データを読み込むと、ここに全記事が表示されます。</h3>
+          <p>
+            上のフォームにあなたのはてなブログURLを入力するか、<code>script.js</code> の
+            <code>manualArticles</code> に全記事データを追加してください。
+          </p>
+        </div>
+        <div class="article-list" id="article-list"></div>
+      </section>
+
+      <section class="about" id="about" aria-labelledby="about-title">
+        <p class="eyebrow">How to Use</p>
+        <h2 id="about-title">このサイトの使い方</h2>
+        <ol>
+          <li>あなたのはてなブログURL、またはRSS URLを入力して「読み込む」を押します。</li>
+          <li>読み込まれた記事はブラウザに保存され、検索・年月・カテゴリで絞り込めます。</li>
+          <li>RSSだけで全記事を取得できない場合は、<code>script.js</code> の <code>manualArticles</code> に記事を追加してください。</li>
+        </ol>
+      </section>
     </main>
 
-    <footer class="site-footer" id="start">
-      <p>このページは、特定の個人ブログではなく、はてなブログ一覧を想定した静的サンプルです。</p>
+    <footer class="site-footer">
+      <p>あなた自身のはてなブログ記事を一覧化するための静的サイトです。</p>
       <a href="#top">ページ上部へ戻る</a>
     </footer>
 
