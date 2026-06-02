@@ -3,119 +3,195 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="日々の小さな発見を綴る、紬の日記帳の記事一覧です。" />
-    <title>紬の日記帳 | 記事一覧</title>
+    <meta
+      name="description"
+      content="福島市在住の郵便配達員が綴る、はてなブログ『dの日記』の紹介ページです。日常、読書、バイクレース観戦、旅、50代からの生き方を発信しています。"
+    />
+    <title>dの日記 | はてなブログ紹介ページ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Slab:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="#top" aria-label="紬の日記帳 ホーム">
-          <span class="brand-mark">紬</span>
-          <span class="brand-copy"><strong>紬の日記帳</strong><small>暮らしと、旅と、おいしいもの。</small></span>
-        </a>
-        <nav class="desktop-nav" aria-label="メインメニュー">
-          <a class="active" href="#articles">記事一覧</a>
-          <a href="#categories">カテゴリー</a>
-          <a href="#profile">プロフィール</a>
-          <a href="#about">このブログについて</a>
-        </nav>
-        <button class="search-trigger" type="button" aria-label="記事を検索" data-focus-search>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5.5"></circle><path d="m15 15 4 4"></path></svg>
-          <span>検索</span>
-        </button>
-        <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
-      </div>
+      <a class="brand" href="#top" aria-label="dの日記 ホーム">
+        <span class="brand-mark">d</span>
+        <span class="brand-name">dの日記</span>
+      </a>
+      <nav class="header-nav" aria-label="メインナビゲーション">
+        <a href="#profile">自己紹介</a>
+        <a href="#latest">最新記事</a>
+        <a href="#recommended">おすすめ記事</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
     </header>
 
     <main id="top">
-      <section class="hero">
-        <div class="hero-inner">
-          <div>
-            <p class="kicker">TSUMUGI'S JOURNAL</p>
-            <h1>日々の、小さな発見を<br /><em>ゆっくり綴る。</em></h1>
-            <p class="hero-text">暮らしの工夫、週末の旅、心に残った本や映画。<br />何気ない毎日を、忘れないように書き留めています。</p>
+      <section class="hero section-shell">
+        <div class="hero-copy">
+          <p class="eyebrow">HATENA BLOG / NOTE</p>
+          <h1>地方で働き、暮らし、考える。<br />50代からの日々を綴るブログ。</h1>
+          <p>
+            「dの日記」は、福島県福島市で暮らす会社員が、郵便配達の仕事、読書、旅、
+            バイクレース観戦、日々のリフレクションを静かに書き留めている場所です。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#latest">記事を読む</a>
+            <a class="button secondary" href="#profile">プロフィールを見る</a>
           </div>
-          <div class="hero-decoration" aria-hidden="true">
-            <span class="deco-circle"></span><span class="deco-leaf leaf-one"></span><span class="deco-leaf leaf-two"></span>
-            <p>Journal<br /><i>since 2019</i></p>
+        </div>
+        <figure class="hero-photo">
+          <img
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85"
+            alt="夕暮れの道と自然の風景"
+          />
+          <figcaption>Fukushima / Daily reflection / Reading / Motorcycle racing</figcaption>
+        </figure>
+      </section>
+
+      <section class="intro-strip" aria-label="ブログのテーマ">
+        <span>日常の出来事</span>
+        <span>読書記録</span>
+        <span>バイクレース観戦</span>
+        <span>旅の記録</span>
+        <span>50代からの働き方</span>
+      </section>
+
+      <section class="section-shell profile" id="profile">
+        <div class="section-heading">
+          <p class="eyebrow">PROFILE</p>
+          <h2>自己紹介</h2>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-card main-profile">
+            <h3>福島市で暮らす、郵便配達員の視点から。</h3>
+            <p>
+              福島県福島市在住。郵便配達員として地域を走りながら、日々の出来事や読書で得た気づき、
+              旅の記録、50代からの生き方や働き方について発信しています。
+            </p>
+            <p>
+              かつては全日本ロードレース選手権GP250クラスに参戦。現在もバイクレース観戦を楽しみ、
+              走ること、働くこと、暮らすことを自分の言葉で振り返っています。
+            </p>
           </div>
+          <ul class="profile-list" aria-label="プロフィール詳細">
+            <li><strong>在住</strong><span>福島県福島市</span></li>
+            <li><strong>仕事</strong><span>郵便配達員</span></li>
+            <li><strong>経験</strong><span>元 全日本ロードレース選手権 GP250クラス参戦</span></li>
+            <li><strong>好きなもの</strong><span>読書、猫、旅、バイクレース</span></li>
+            <li><strong>発信場所</strong><span>はてなブログ、note</span></li>
+          </ul>
         </div>
       </section>
 
-      <section class="content-section" id="articles">
-        <div class="section-title-row">
+      <section class="section-shell latest" id="latest">
+        <div class="section-heading split-heading">
           <div>
-            <p class="section-label">ALL POSTS</p>
-            <h2>記事一覧</h2>
+            <p class="eyebrow">LATEST POSTS</p>
+            <h2>最新記事</h2>
           </div>
-          <p><strong id="article-count">12</strong> 件の記事</p>
+          <p>日々の記録、読書、仕事のことを中心に更新しています。</p>
         </div>
+        <div class="article-grid">
+          <article class="post-card large">
+            <img
+              src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1000&q=85"
+              alt="新聞とコーヒーが置かれたテーブル"
+            />
+            <div>
+              <span class="category">日常の出来事</span>
+              <h3>配達の途中で見つけた、季節の変化について</h3>
+              <p>毎日同じ道を走っていても、風の匂いや空の色は少しずつ変わっていきます。</p>
+            </div>
+          </article>
+          <article class="post-card">
+            <img
+              src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=900&q=85"
+              alt="本を開いて読書している手元"
+            />
+            <div>
+              <span class="category">読書記録</span>
+              <h3>最近読んだ本と、心に残った一文</h3>
+              <p>仕事終わりの読書時間に考えたことを短くまとめました。</p>
+            </div>
+          </article>
+          <article class="post-card">
+            <img
+              src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=900&q=85"
+              alt="映画館の座席とスクリーン"
+            />
+            <div>
+              <span class="category">リフレクション</span>
+              <h3>50代からの働き方を、もう一度考える</h3>
+              <p>体力、時間、家族、自分らしさ。地方で働く会社員としての実感です。</p>
+            </div>
+          </article>
+        </div>
+      </section>
 
-        <div class="toolbar">
-          <label class="search-box">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="5.5"></circle><path d="m15 15 4 4"></path></svg>
-            <input id="search-input" type="search" placeholder="キーワードで記事を検索" autocomplete="off" />
+      <section class="section-shell recommended" id="recommended">
+        <div class="section-heading">
+          <p class="eyebrow">RECOMMENDED</p>
+          <h2>おすすめ記事</h2>
+        </div>
+        <div class="recommended-list">
+          <a class="recommended-item" href="#latest">
+            <span>01</span>
+            <div>
+              <h3>全日本ロードレースGP250時代を振り返る</h3>
+              <p>レースに挑戦していた頃の経験と、今の暮らしにつながっていること。</p>
+            </div>
+          </a>
+          <a class="recommended-item" href="#latest">
+            <span>02</span>
+            <div>
+              <h3>福島で暮らす会社員の、日々の視点</h3>
+              <p>地方で働くからこそ見えてくる街、人、仕事、生活のこと。</p>
+            </div>
+          </a>
+          <a class="recommended-item" href="#latest">
+            <span>03</span>
+            <div>
+              <h3>猫と本と、静かな休日</h3>
+              <p>読書が好きで、猫が好き。ゆっくり過ごす日の記録です。</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-shell contact" id="contact">
+        <div>
+          <p class="eyebrow">CONTACT</p>
+          <h2>お問い合わせ</h2>
+          <p>
+            ブログやnoteの感想、記事のご相談などがありましたら、各発信場所のコメント欄やプロフィール欄からご連絡ください。
+          </p>
+        </div>
+        <form class="contact-card" action="#" method="post">
+          <label>
+            <span>お名前</span>
+            <input type="text" name="name" placeholder="山田 太郎" />
           </label>
-          <label class="sort-box">
-            <span>並び順</span>
-            <select id="sort-select" aria-label="記事の並び順">
-              <option value="newest">新しい順</option>
-              <option value="oldest">古い順</option>
-              <option value="popular">人気順</option>
-            </select>
+          <label>
+            <span>メールアドレス</span>
+            <input type="email" name="email" placeholder="you@example.com" />
           </label>
-          <div class="view-switch" aria-label="表示形式">
-            <button class="is-active" type="button" data-view="grid" aria-label="グリッド表示" aria-pressed="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6"></rect><rect x="14" y="4" width="6" height="6"></rect><rect x="4" y="14" width="6" height="6"></rect><rect x="14" y="14" width="6" height="6"></rect></svg>
-            </button>
-            <button type="button" data-view="list" aria-label="リスト表示" aria-pressed="false">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"></path><circle cx="4" cy="6" r=".7"></circle><circle cx="4" cy="12" r=".7"></circle><circle cx="4" cy="18" r=".7"></circle></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="layout">
-          <aside class="sidebar" id="categories">
-            <div class="sidebar-heading"><span>カテゴリー</span><small>CATEGORY</small></div>
-            <div class="category-list" id="category-list">
-              <button class="is-active" type="button" data-category="すべて">すべての記事 <span>12</span></button>
-              <button type="button" data-category="暮らし">暮らし <span>4</span></button>
-              <button type="button" data-category="旅">旅 <span>3</span></button>
-              <button type="button" data-category="食べもの">食べもの <span>2</span></button>
-              <button type="button" data-category="本と映画">本と映画 <span>2</span></button>
-              <button type="button" data-category="日々のこと">日々のこと <span>1</span></button>
-            </div>
-            <div class="profile-card" id="profile">
-              <div class="profile-top"><div class="profile-avatar">紬</div><div><h3>紬 <small>tsumugi</small></h3><p>東京で暮らす会社員</p></div></div>
-              <p>小さな旅と喫茶店、器、本が好きです。暮らしの中で見つけた、ささやかな発見を綴っています。</p>
-              <a href="#about">プロフィールを読む <span>→</span></a>
-            </div>
-          </aside>
-
-          <div class="article-area">
-            <div class="article-grid" id="article-grid"></div>
-            <div class="empty-state" id="empty-state" hidden>
-              <div>⌕</div><h3>記事が見つかりませんでした</h3><p>別のキーワードやカテゴリーで探してみてください。</p>
-            </div>
-            <nav class="pagination" aria-label="ページネーション">
-              <button class="arrow" type="button" aria-label="前のページ" disabled>←</button><button class="current" type="button">1</button><button type="button">2</button><button type="button">3</button><span>…</span><button type="button">8</button><button class="arrow" type="button" aria-label="次のページ">→</button>
-            </nav>
-          </div>
-        </div>
+          <label>
+            <span>メッセージ</span>
+            <textarea name="message" rows="4" placeholder="ブログの感想やお問い合わせ内容をご記入ください"></textarea>
+          </label>
+          <button class="button primary" type="submit">送信する</button>
+        </form>
       </section>
     </main>
 
-    <footer>
-      <div class="footer-inner">
-        <a class="footer-brand" href="#top"><span>紬</span><strong>紬の日記帳</strong></a>
-        <p>暮らしと、旅と、おいしいもの。</p>
-        <small>© 2025 紬の日記帳. Powered by Hatena Blog.</small>
-      </div>
+    <footer class="site-footer">
+      <p>© dの日記</p>
+      <p>日常、読書、旅、バイクレース、50代からの生き方を綴るブログ。</p>
     </footer>
-    <script src="script.js"></script>
   </body>
 </html>
