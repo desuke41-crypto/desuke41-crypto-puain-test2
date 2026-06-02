@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="OILDOCKのオイル交換WEB予約フォームです。" />
+    <title>WEB予約 | OILDOCK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="reservation-page">
+    <header class="reservation-header">
+      <a class="brand" href="index.html" aria-label="OILDOCK ホーム">
+        <span class="brand-mark"><span></span></span>
+        <span class="brand-text">OIL<span>DOCK</span></span>
+      </a>
+    </header>
+    <main class="reservation-main">
+      <p class="eyebrow"><span></span> EASY ONLINE BOOKING</p>
+      <h1>WEB予約</h1>
+      <p>ご希望の内容を入力してください。スタッフが確認後、ご予約確定のご連絡を差し上げます。</p>
+      <form class="reservation-form">
+        <label>お名前<input name="name" autocomplete="name" required /></label>
+        <label>メールアドレス<input name="email" type="email" autocomplete="email" required /></label>
+        <label>電話番号<input name="tel" type="tel" autocomplete="tel" required /></label>
+        <label>ご希望日<input name="date" type="date" required /></label>
+        <label>ご希望メニュー
+          <select name="service" required>
+            <option value="">選択してください</option>
+            <option>スタンダードオイル交換</option>
+            <option>フィルターセット交換</option>
+          </select>
+        </label>
+        <button type="submit">予約内容を送信する</button>
+        <p class="reservation-note">送信後、店舗からのご連絡をもって予約確定となります。</p>
+        <p class="reservation-status" role="status" hidden>予約リクエストを受け付けました。店舗からのご連絡をお待ちください。</p>
+      </form>
+    </main>
+    <script src="booking.js"></script>
+  </body>
+</html>
