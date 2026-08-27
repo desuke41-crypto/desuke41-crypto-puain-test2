@@ -43,7 +43,11 @@ def parse_post(path: Path) -> tuple[dict[str, object], str]:
             meta[key.strip()] = value
     if not meta.get("title"):
         raise ValueError(f"{path}: title は必須です")
-    return meta, body.strip() + "\n"
+    if body.startswith("\n"):
+        body = body[1:]
+    if not body.endswith("\n"):
+        body += "\n"
+    return meta, body
 
 
 def is_due(meta: dict[str, object], now: datetime) -> bool:
@@ -61,7 +65,7 @@ def is_due(meta: dict[str, object], now: datetime) -> bool:
 def atom_entry(meta: dict[str, object], body: str) -> bytes:
     entry = ET.Element(ET.QName(ATOM, "entry"))
     ET.SubElement(entry, ET.QName(ATOM, "title")).text = str(meta["title"])
-    content = ET.SubElement(entry, ET.QName(ATOM, "content"), {"type": "text/markdown"})
+    content = ET.SubElement(entry, ET.QName(ATOM, "content"), {"type": "text/plain"})
     content.text = body
     for category in meta.get("categories", []):
         ET.SubElement(entry, ET.QName(ATOM, "category"), {"term": str(category)})
