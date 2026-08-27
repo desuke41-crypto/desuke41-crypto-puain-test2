@@ -27,6 +27,7 @@ jobs:
           HATENA_BLOG_DOMAIN: ${{ secrets.HATENA_BLOG_DOMAIN }}
         run: python scripts/publish_hatena.py
       - name: Save publication state
+        if: always()
         run: |
           if git diff --quiet -- .hatena-published.json; then exit 0; fi
           git config user.name "github-actions[bot]"
