@@ -17,6 +17,16 @@ class HatenaPublisherTest(unittest.TestCase):
         self.assertFalse(meta["draft"])
         self.assertEqual(body, "本文\n")
 
+    def test_parse_post_preserves_markdown_whitespace(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "post.md"
+            path.write_text(
+                "---\ntitle: コード\ndraft: false\n---\n\n    print('hello')  \n",
+                encoding="utf-8",
+            )
+            _, body = parse_post(path)
+        self.assertEqual(body, "    print('hello')  \n")
+
     def test_scheduled_post_is_due(self):
         now = datetime(2026, 8, 27, tzinfo=timezone.utc)
         self.assertTrue(is_due({"draft": False, "publish_at": "2026-08-26T09:00:00+09:00"}, now))
@@ -27,7 +37,7 @@ class HatenaPublisherTest(unittest.TestCase):
         payload = atom_entry({"title": "題名", "categories": ["日記"]}, "本文")
         self.assertIn(f'xmlns:ns0="{ATOM}"'.encode(), payload)
         self.assertIn(f'xmlns:ns1="{APP}"'.encode(), payload)
-        self.assertIn(b'type="text/markdown"', payload)
+        self.assertIn(b'type="text/plain"', payload)
         self.assertIn(b"<ns1:draft>no</ns1:draft>", payload)
 
 
