@@ -1,92 +1,51 @@
-const cards = [...document.querySelectorAll('.weather-card')];
-const unitSwitch = document.querySelector('.unit-switch');
-const unitLabels = unitSwitch.querySelectorAll('span');
-const updatedAt = document.querySelector('#updated-at');
-const refreshButton = document.querySelector('#refresh-weather');
-let useFahrenheit = false;
-const weatherData = new Map();
+const articles = [
+  { title: '知っておきたい、お金とのちょうどいい付き合い方', category: 'お金', date: '2026.08.18', minutes: 6, summary: '難しく考えすぎず、今日から始められる小さな習慣をまとめました。' },
+  { title: '毎日の暮らしを少し軽くする、7つの小さな工夫', category: '暮らし', date: '2026.08.10', minutes: 5, summary: '無理なく続けられて、生活に余白が生まれるアイデアをご紹介。' },
+  { title: 'はじめてでもわかる、デジタル資産の基礎知識', category: 'デジタル', date: '2026.07.29', minutes: 8, summary: 'よく耳にする言葉や仕組みを、初心者向けにやさしく解説します。' },
+  { title: '大人になってからの「学び直し」を楽しむコツ', category: '学び', date: '2026.07.16', minutes: 4, summary: '勉強を義務にしない、自分のペースで学び続けるヒント。' },
+  { title: '情報に疲れないために、私がやめた5つのこと', category: '暮らし', date: '2026.07.02', minutes: 5, summary: '情報との距離を整えて、大切なことに集中するための記録です。' },
+  { title: '今日から見直す、シンプルな家計の整え方', category: 'お金', date: '2026.06.21', minutes: 7, summary: '続けやすさを第一にした、家計を把握するための基本ステップ。' },
+];
 
-const weatherCodes = {
-  0: ['快晴', 'sun'], 1: ['晴れ', 'partly'], 2: ['晴れ時々くもり', 'partly'], 3: ['くもり', 'cloud'],
-  45: ['霧', 'cloud'], 48: ['霧', 'cloud'], 51: ['弱い霧雨', 'rain'], 53: ['霧雨', 'rain'], 55: ['強い霧雨', 'rain'],
-  61: ['弱い雨', 'rain'], 63: ['雨', 'rain'], 65: ['強い雨', 'rain'], 71: ['弱い雪', 'snow'], 73: ['雪', 'snow'],
-  75: ['強い雪', 'snow'], 80: ['にわか雨', 'rain'], 81: ['にわか雨', 'rain'], 82: ['激しい雨', 'rain'],
-  85: ['にわか雪', 'snow'], 86: ['強いにわか雪', 'snow'], 95: ['雷雨', 'storm'], 96: ['雷雨・ひょう', 'storm'], 99: ['激しい雷雨', 'storm'],
-};
+const blogUrl = 'https://desuke41.hateblo.jp/';
+const ranking = document.querySelector('#ranking');
+const grid = document.querySelector('#article-grid');
+const empty = document.querySelector('#empty');
+const search = document.querySelector('#search');
+const filterButtons = [...document.querySelectorAll('[data-filter]')];
+let activeFilter = 'all';
 
-const displayTemp = (celsius) => useFahrenheit ? Math.round((celsius * 9) / 5 + 32) : Math.round(celsius);
-const weatherInfo = (code, isDay = true) => {
-  const [label, icon] = weatherCodes[code] ?? ['天気不明', 'cloud'];
-  return [label, code === 0 && !isDay ? 'moon' : icon];
-};
+ranking.innerHTML = articles.slice(0, 5).map((article, index) => `
+  <a class="rank-item" href="${blogUrl}" target="_blank" rel="noreferrer">
+    <span class="rank-number">0${index + 1}</span>
+    <span class="rank-copy"><small>${article.category}</small><h3>${article.title}</h3></span>
+    <span class="rank-meta">${article.date}　·　${article.minutes} MIN READ</span><span class="arrow">↗</span>
+  </a>`).join('');
 
-function renderCard(card, data) {
-  const current = data.current;
-  const [condition, iconClass] = weatherInfo(current.weather_code, Boolean(current.is_day));
-  card.querySelector('.local-time').textContent = current.time.slice(11, 16);
-  card.querySelector('.weather-icon').className = `weather-icon ${iconClass}`;
-  card.querySelector('.weather-icon').setAttribute('aria-label', condition);
-  card.querySelector('.temp strong').textContent = displayTemp(current.temperature_2m);
-  card.querySelector('.temp sup').textContent = useFahrenheit ? '°F' : '°C';
-  card.querySelector('.condition').innerHTML = `${condition} <span>・</span> 体感 ${displayTemp(current.apparent_temperature)}°`;
-  const details = card.querySelectorAll('.details b');
-  details[0].textContent = `${current.precipitation_probability ?? 0}%`;
-  details[1].textContent = `${Math.round(current.wind_speed_10m)} km/h`;
-  details[2].textContent = `${current.relative_humidity_2m}%`;
-  card.querySelector('.mini-forecast').innerHTML = data.daily.time.slice(1, 4).map((date, index) => {
-    const i = index + 1;
-    const [label, icon] = weatherInfo(data.daily.weather_code[i]);
-    const weekday = new Intl.DateTimeFormat('ja-JP', { weekday: 'short', timeZone: 'UTC' }).format(new Date(`${date}T00:00:00Z`));
-    return `<div><small>${weekday}</small><i class="forecast-icon ${icon}" aria-label="${label}"></i><b>${displayTemp(data.daily.temperature_2m_max[i])}°</b><span>${displayTemp(data.daily.temperature_2m_min[i])}°</span></div>`;
-  }).join('');
-  card.classList.remove('is-loading');
+function renderArticles() {
+  const query = search.value.trim().toLowerCase();
+  const visible = articles.filter((article) => (activeFilter === 'all' || article.category === activeFilter) && `${article.title}${article.summary}`.toLowerCase().includes(query));
+  grid.innerHTML = visible.map((article) => `
+    <a class="article-card" href="${blogUrl}" target="_blank" rel="noreferrer">
+      <small>${article.category}</small><h3>${article.title}</h3><p>${article.summary}</p>
+      <span class="card-footer"><span>${article.date}</span><span>${article.minutes} MIN READ　↗</span></span>
+    </a>`).join('');
+  empty.hidden = visible.length > 0;
 }
 
-async function fetchCityWeather(card) {
-  const params = new URLSearchParams({
-    latitude: card.dataset.latitude, longitude: card.dataset.longitude,
-    current: 'temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation_probability,weather_code,wind_speed_10m',
-    daily: 'weather_code,temperature_2m_max,temperature_2m_min', timezone: 'auto', forecast_days: '4',
-  });
-  const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params}`);
-  if (!response.ok) throw new Error(`天気APIエラー: ${response.status}`);
-  return response.json();
-}
+filterButtons.forEach((button) => button.addEventListener('click', () => {
+  activeFilter = button.dataset.filter;
+  filterButtons.forEach((item) => item.classList.toggle('selected', item === button));
+  renderArticles();
+}));
+search.addEventListener('input', renderArticles);
 
-async function updateWeather() {
-  refreshButton.disabled = true;
-  updatedAt.classList.remove('error');
-  updatedAt.lastChild.textContent = ' 最新の天気を取得しています…';
-  cards.forEach((card) => card.classList.add('is-loading'));
-  const results = await Promise.allSettled(cards.map(fetchCityWeather));
-  let successful = 0;
-  results.forEach((result, index) => {
-    if (result.status === 'fulfilled') {
-      weatherData.set(cards[index].dataset.city, result.value);
-      renderCard(cards[index], result.value);
-      successful += 1;
-    } else {
-      cards[index].classList.remove('is-loading');
-      console.error(result.reason);
-    }
-  });
-  if (successful === cards.length) {
-    updatedAt.lastChild.textContent = ` 最終更新：${new Intl.DateTimeFormat('ja-JP', { dateStyle: 'short', timeStyle: 'short' }).format(new Date())}`;
-  } else {
-    updatedAt.classList.add('error');
-    updatedAt.lastChild.textContent = successful ? ` ${successful}/${cards.length}都市を更新しました。再度お試しください。` : ' 天気を取得できませんでした。通信環境をご確認ください。';
-  }
-  refreshButton.disabled = false;
-}
-
-unitSwitch.addEventListener('click', () => {
-  useFahrenheit = !useFahrenheit;
-  unitLabels[0].classList.toggle('selected', !useFahrenheit);
-  unitLabels[1].classList.toggle('selected', useFahrenheit);
-  cards.forEach((card) => {
-    const data = weatherData.get(card.dataset.city);
-    if (data) renderCard(card, data);
-  });
+const menuButton = document.querySelector('.menu-button');
+const nav = document.querySelector('.site-header nav');
+menuButton.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+  menuButton.textContent = isOpen ? 'CLOSE' : 'MENU';
 });
-refreshButton.addEventListener('click', updateWeather);
-updateWeather();
+nav.addEventListener('click', () => { nav.classList.remove('open'); menuButton.setAttribute('aria-expanded', 'false'); menuButton.textContent = 'MENU'; });
+renderArticles();
