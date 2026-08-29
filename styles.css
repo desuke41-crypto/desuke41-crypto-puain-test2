@@ -1,191 +1,30 @@
-:root {
-  --bg: #eef4f8;
-  --card: #fffdf8;
-  --ink: #1e2c35;
-  --muted: #647681;
-  --line: #b7c7d2;
-  --accent: #e95f41;
-  --accent-dark: #ba432b;
-  --river: #44a3d5;
-  --hotel: #7864d9;
-}
+:root { --ink:#102c2d; --green:#11605a; --mint:#dceee9; --cream:#f3f0e7; --orange:#ee7d3f; --line:#d7ded9; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; color:var(--ink); background:#f8f8f4; font-family:"Noto Sans JP",sans-serif; }
+.site-header { height:84px; padding:0 max(5vw,24px); display:flex; align-items:center; justify-content:space-between; background:#fff; border-bottom:1px solid var(--line); }
+.brand { display:flex; align-items:center; gap:10px; color:var(--ink); text-decoration:none; font:600 17px "DM Sans",sans-serif; letter-spacing:.12em; }
+.brand b { color:var(--green); }.brand-mark { width:35px;height:35px;display:grid;place-items:center;color:white;background:var(--green);border-radius:50%;font-size:24px;transform:rotate(-25deg); }
+nav { height:100%;display:flex;align-items:center;gap:34px; } nav a { height:100%;display:grid;place-items:center;color:#536665;text-decoration:none;font-size:13px;font-weight:600;position:relative; }
+nav a.active:after { content:"";position:absolute;bottom:0;width:100%;height:3px;background:var(--orange); }
+.unit-switch { display:flex;padding:3px;border:1px solid #cbd5d1;border-radius:99px;background:#eff2ef;color:#6b7a78;cursor:pointer; }.unit-switch span{padding:5px 9px;border-radius:99px;font:600 12px "DM Sans"}.unit-switch .selected{background:var(--green);color:#fff}
+.hero { position:relative;min-height:470px;padding:88px max(8vw,30px);overflow:hidden;background:var(--cream); }
+.hero:after { content:"";position:absolute;width:600px;height:600px;right:-80px;top:-205px;border:1px solid #cddbd4;border-radius:50%;box-shadow:0 0 0 75px #e8ece4,0 0 0 76px #cddbd4,0 0 0 150px #edf0e9; }
+.hero:before { content:"☀";position:absolute;z-index:1;right:11vw;top:80px;color:var(--orange);font-size:200px;line-height:1;filter:drop-shadow(0 25px 40px rgba(238,125,63,.22)); }
+.hero>* { position:relative;z-index:2; }.eyebrow { margin:0 0 18px;color:var(--orange);font:700 11px "DM Sans";letter-spacing:.22em; }
+h1 { max-width:720px;margin:0;font-size:clamp(44px,5.8vw,76px);line-height:1.24;letter-spacing:-.07em; } h1 em{color:var(--green);font-style:normal}.intro{margin:25px 0;color:#596a68;line-height:1.9;font-size:14px}.updated{display:flex;align-items:center;gap:9px;color:#788684;font-size:11px}.updated span{width:7px;height:7px;border-radius:50%;background:#65aa81;box-shadow:0 0 0 4px #dce9dd}
+.city-section { padding:80px max(5vw,24px) 100px;background:#f8f8f4; }.section-heading { max-width:1260px;margin:0 auto 34px;display:flex;align-items:end;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:20px}.section-heading .eyebrow{margin-bottom:8px}.section-heading h2,.travel-tip h2{margin:0;font-size:31px;letter-spacing:-.05em}.section-heading>p{font-size:12px;color:#778582}
+.city-grid { max-width:1260px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px; }.weather-card{position:relative;min-height:390px;padding:24px 28px 0;background:#fff;border:1px solid #e0e5e1;border-radius:2px;overflow:hidden;transition:.25s ease}.weather-card:hover{transform:translateY(-5px);box-shadow:0 18px 35px rgba(30,57,51,.1)}.weather-card.featured{background:var(--green);color:#fff;border-color:var(--green)}
+.card-top{display:flex;justify-content:space-between;align-items:center}.region{font:700 10px "DM Sans";letter-spacing:.18em;color:var(--orange)}.featured .region{color:#ffac76}.local-time{font:600 11px "DM Sans";color:#869490}.featured .local-time{color:#bcd4cf}
+.weather-icon{position:absolute;right:27px;top:66px;width:75px;height:64px}.weather-icon.sun:before{content:"☀";color:#f0a24a;font-size:67px;line-height:1}.weather-icon.cloud:before{content:"☁";color:#92aaa9;font-size:72px}.weather-icon.partly:before{content:"🌤";font-size:62px}.weather-icon.rain:before{content:"🌧";font-size:62px}.weather-icon.moon:before{content:"☾";color:#e8b557;font-size:75px;line-height:1}.featured .weather-icon.sun:before{color:#ffd08a}
+.country{margin:60px 0 3px;font-size:11px;color:#778683}.featured .country{color:#b9d3cf}.weather-card h3{margin:0;font-size:25px;letter-spacing:-.05em}.temp{display:flex;align-items:start;margin-top:18px;font-family:"DM Sans"}.temp strong{font-size:73px;line-height:1;font-weight:500;letter-spacing:-.07em}.temp sup{padding-top:9px;font-size:18px}.condition{margin:3px 0 24px;color:#526562;font-size:12px}.condition span{color:#bbc4c1}.featured .condition{color:#d1e1de}
+.details{margin:0 -28px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #e5e9e6;background:#fbfcfa}.featured .details{background:#0e554f;border-color:#34746f}.details span{min-height:67px;padding:13px 6px;text-align:center;color:#71817e;font-size:12px;border-right:1px solid #e5e9e6}.details span:last-child{border:0}.details b{margin-left:3px;color:var(--ink);font:600 12px "DM Sans"}.details small{display:block;margin-top:4px;font-size:9px}.featured .details span,.featured .details b{color:#d6e8e5}.featured .details span{border-color:#34746f}
+.travel-tip{padding:55px max(8vw,30px);display:flex;align-items:center;justify-content:space-between;background:#dfeee9}.travel-tip .eyebrow{margin-bottom:8px}.travel-tip>p{color:#516966;line-height:1.8;font-size:13px}.travel-tip small{color:#82928f}footer{padding:28px max(5vw,24px);display:flex;justify-content:space-between;background:#0e312f;color:#b1c4c0;font:500 9px "DM Sans";letter-spacing:.16em}
+@media(max-width:900px){.city-grid{grid-template-columns:repeat(2,1fr)}.hero:before{opacity:.25;right:0}.hero:after{opacity:.5}.travel-tip{gap:30px}}@media(max-width:600px){.site-header{height:68px}.brand{font-size:13px}nav a{display:none}.hero{min-height:430px;padding-top:70px}h1{font-size:45px}.city-grid{grid-template-columns:1fr}.city-section{padding-top:60px}.section-heading>p{display:none}.weather-card{min-height:380px}.travel-tip{align-items:start;flex-direction:column}.travel-tip h2{font-size:27px}footer{gap:15px;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.weather-card{transition:none}}
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  min-height: 100vh;
-  margin: 0;
-  display: grid;
-  place-items: center;
-  padding: 32px 16px;
-  color: var(--ink);
-  background:
-    radial-gradient(circle at top left, #ffffff 0 18%, transparent 32%),
-    linear-gradient(145deg, #dceaf1, var(--bg));
-  font-family: "Noto Sans JP", system-ui, sans-serif;
-}
-
-.route-card {
-  width: min(760px, 100%);
-  padding: clamp(28px, 5vw, 56px);
-  background: color-mix(in srgb, var(--card) 94%, white);
-  border: 1px solid #ffffff;
-  border-radius: 32px;
-  box-shadow: 0 24px 70px rgba(40, 61, 74, 0.18);
-}
-
-.direction {
-  margin: 0;
-  color: var(--accent-dark);
-  font-size: clamp(18px, 3vw, 24px);
-  font-weight: 900;
-  letter-spacing: 0.16em;
-  text-align: center;
-}
-
-.direction-north {
-  margin-bottom: 18px;
-}
-
-.direction-south {
-  margin-top: 18px;
-}
-
-h1 {
-  margin: 0;
-  text-align: center;
-  font-size: clamp(28px, 5vw, 48px);
-  line-height: 1.25;
-  letter-spacing: -0.06em;
-}
-
-.lead {
-  max-width: 520px;
-  margin: 14px auto 42px;
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.8;
-  text-align: center;
-}
-
-.route-map {
-  position: relative;
-  width: min(430px, 100%);
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
-}
-
-.route-map::before {
-  content: "";
-  position: absolute;
-  top: 27px;
-  bottom: 27px;
-  left: 27px;
-  width: 4px;
-  border-radius: 999px;
-  background: linear-gradient(var(--accent), var(--river), var(--hotel));
-}
-
-.route-stop {
-  position: relative;
-  min-height: 74px;
-  display: grid;
-  grid-template-columns: 58px 1fr;
-  align-items: center;
-}
-
-.route-stop:last-child {
-  min-height: 58px;
-}
-
-.pin {
-  position: relative;
-  z-index: 1;
-  width: 58px;
-  height: 58px;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  background: var(--accent);
-  border: 5px solid var(--card);
-  border-radius: 999px;
-  box-shadow: 0 8px 20px rgba(233, 95, 65, 0.28);
-  font-weight: 900;
-}
-
-.place,
-.branch-place {
-  display: inline-flex;
-  align-items: center;
-  min-height: 48px;
-  padding: 10px 18px;
-  background: #fff;
-  border: 1px solid #e4ecef;
-  border-radius: 18px;
-  box-shadow: 0 8px 22px rgba(40, 61, 74, 0.08);
-  font-size: clamp(18px, 3vw, 23px);
-  font-weight: 900;
-}
-
-.has-branch {
-  grid-template-columns: 58px auto auto;
-}
-
-.branch {
-  display: inline-flex;
-  align-items: center;
-  margin-left: 10px;
-}
-
-.branch-line {
-  width: clamp(32px, 7vw, 74px);
-  height: 4px;
-  background: var(--line);
-  border-radius: 999px;
-}
-
-.branch-place {
-  margin-left: 10px;
-  color: var(--accent-dark);
-  font-size: clamp(15px, 2.5vw, 20px);
-}
-
-.river .pin {
-  background: var(--river);
-  box-shadow: 0 8px 20px rgba(68, 163, 213, 0.3);
-}
-
-.river .place {
-  color: #1478a8;
-}
-
-.hotel .pin {
-  background: var(--hotel);
-  box-shadow: 0 8px 20px rgba(120, 100, 217, 0.3);
-}
-
-.hotel .place {
-  color: var(--hotel);
-}
-
-@media (max-width: 560px) {
-  .route-card {
-    border-radius: 24px;
-  }
-
-  .has-branch {
-    grid-template-columns: 58px 1fr;
-  }
-
-  .branch {
-    grid-column: 2;
-    margin: -4px 0 18px;
-  }
-
-  .branch-line {
-    width: 28px;
-  }
-}
+/* Live forecast controls and three-day outlook */
+.update-row{display:flex;align-items:center;gap:18px}.refresh-button{padding:7px 13px;color:var(--green);background:transparent;border:1px solid #b9c9c3;border-radius:99px;font:600 11px "Noto Sans JP";cursor:pointer}.refresh-button:hover{background:#fff}.refresh-button:disabled{cursor:wait;opacity:.55}.updated.error{color:#b44f31}.updated.error span{background:#d87355;box-shadow:0 0 0 4px #ead9d4}
+.weather-card{min-height:466px}.weather-card.is-loading:after{content:"";position:absolute;z-index:3;inset:0;background:rgba(248,248,244,.45);animation:pulse 1s ease-in-out infinite alternate}.weather-card.featured.is-loading:after{background:rgba(14,85,79,.35)}@keyframes pulse{to{opacity:.3}}
+.weather-icon.snow:before{content:"🌨";font-size:62px}.weather-icon.storm:before{content:"⛈";font-size:62px}
+.mini-forecast{height:76px;margin:0 -28px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #e5e9e6}.mini-forecast>div{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;padding:10px 14px;border-right:1px solid #e5e9e6}.mini-forecast>div:last-child{border:0}.mini-forecast small{font-size:9px;color:#758582}.mini-forecast b,.mini-forecast span{font:600 12px "DM Sans"}.mini-forecast span{margin-left:4px;color:#82908e}.forecast-icon{grid-row:1/3;grid-column:2;font-style:normal}.forecast-icon.sun:after{content:"☀";color:#eaa047}.forecast-icon.partly:after{content:"🌤"}.forecast-icon.cloud:after{content:"☁";color:#8ba3a1}.forecast-icon.rain:after{content:"🌧"}.forecast-icon.snow:after{content:"🌨"}.forecast-icon.storm:after{content:"⛈"}.forecast-icon.moon:after{content:"☾"}.featured .mini-forecast,.featured .mini-forecast>div{border-color:#34746f}.featured .mini-forecast small,.featured .mini-forecast span{color:#b9d3cf}.travel-tip a{color:#476b65}

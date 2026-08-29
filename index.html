@@ -3,59 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ソウル観光スポットを北から南へ並べた位置関係メモです。" />
-    <title>ソウル観光ルート | 北から南の位置関係</title>
+    <meta name="description" content="福島市を含む世界7都市の空模様を見渡せる天気予報ダッシュボードです。" />
+    <title>SEKAI WEATHER — 世界の天気予報</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="route-card" aria-labelledby="route-title">
-      <p class="direction direction-north">【北】</p>
-      <h1 id="route-title">ソウル観光スポット位置関係</h1>
-      <p class="lead">北から南へ移動するイメージで、主要スポットとホテル周辺を整理しました。</p>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="SEKAI WEATHER ホーム">
+        <span class="brand-mark" aria-hidden="true">◒</span>
+        <span>SEKAI <b>WEATHER</b></span>
+      </a>
+      <nav aria-label="メインメニュー">
+        <a class="active" href="#forecast">世界の天気</a>
+        <a href="#guide">旅のヒント</a>
+        <button class="unit-switch" type="button" aria-label="温度単位を切り替える"><span class="selected">°C</span><span>°F</span></button>
+      </nav>
+    </header>
 
-      <ol class="route-map" aria-label="北から南への観光ルート">
-        <li class="route-stop">
-          <span class="pin">1</span>
-          <span class="place">景福宮</span>
-        </li>
-        <li class="route-stop">
-          <span class="pin">2</span>
-          <span class="place">西大門刑務所</span>
-        </li>
-        <li class="route-stop has-branch">
-          <span class="pin">3</span>
-          <span class="place">明洞</span>
-          <span class="branch" aria-label="明洞から東側にNソウルタワー">
-            <span class="branch-line"></span>
-            <span class="branch-place">Nソウルタワー</span>
-          </span>
-        </li>
-        <li class="route-stop">
-          <span class="pin">4</span>
-          <span class="place">戦争記念館</span>
-        </li>
-        <li class="route-stop">
-          <span class="pin">5</span>
-          <span class="place">梨泰院</span>
-        </li>
-        <li class="route-stop river">
-          <span class="pin">6</span>
-          <span class="place">漢江</span>
-        </li>
-        <li class="route-stop hotel">
-          <span class="pin">7</span>
-          <span class="place">ホテル（永登浦）</span>
-        </li>
-        <li class="route-stop">
-          <span class="pin">8</span>
-          <span class="place">弘大</span>
-        </li>
-      </ol>
+    <main>
+      <section class="hero" id="forecast">
+        <p class="eyebrow">WORLD FORECAST</p>
+        <h1>空を見れば、<br /><em>世界が近くなる。</em></h1>
+        <p class="intro">世界の主要都市の空模様を、ひと目で。<br />次の旅にも、遠くにいる大切な人にも。</p>
+        <div class="update-row"><div class="updated" id="updated-at" role="status"><span></span>最新の天気を取得しています…</div><button class="refresh-button" id="refresh-weather" type="button">↻ 更新する</button></div>
+      </section>
 
-      <p class="direction direction-south">【南】</p>
+      <section class="city-section" aria-labelledby="cities-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">AROUND THE WORLD</p>
+            <h2 id="cities-title">世界のいま</h2>
+          </div>
+          <p>現在の天気 ＋ 3日間予報</p>
+        </div>
+
+        <div class="city-grid">
+          <article class="weather-card featured" data-city="tokyo" data-latitude="35.6762" data-longitude="139.6503">
+            <div class="card-top"><span class="region">ASIA</span><span class="local-time">09:00</span></div>
+            <div class="weather-icon sun" aria-label="晴れ"><i></i></div>
+            <p class="country">日本</p><h3>東京</h3>
+            <div class="temp"><strong>31</strong><sup>°C</sup></div>
+            <p class="condition">晴れ <span>・</span> 体感 34°</p>
+            <div class="details"><span>☂ <b>10%</b><small>降水</small></span><span>≋ <b>3 m/s</b><small>風速</small></span><span>◉ <b>68%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="東京の3日間予報"></div>
+          </article>
+
+          <article class="weather-card" data-city="fukushima" data-latitude="37.7608" data-longitude="140.4747">
+            <div class="card-top"><span class="region">ASIA</span><span class="local-time">--:--</span></div>
+            <div class="weather-icon sun" aria-label="天気を取得中"><i></i></div>
+            <p class="country">日本・福島県</p><h3>福島市</h3>
+            <div class="temp"><strong>--</strong><sup>°C</sup></div><p class="condition">最新の天気を取得中</p>
+            <div class="details"><span>☂ <b>--%</b><small>降水</small></span><span>≋ <b>-- km/h</b><small>風速</small></span><span>◉ <b>--%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="福島市の3日間予報"></div>
+          </article>
+
+          <article class="weather-card" data-city="london" data-latitude="51.5072" data-longitude="-0.1276">
+            <div class="card-top"><span class="region">EUROPE</span><span class="local-time">01:00</span></div>
+            <div class="weather-icon cloud" aria-label="くもり"><i></i></div>
+            <p class="country">イギリス</p><h3>ロンドン</h3>
+            <div class="temp"><strong>19</strong><sup>°C</sup></div><p class="condition">くもり <span>・</span> 体感 18°</p>
+            <div class="details"><span>☂ <b>30%</b><small>降水</small></span><span>≋ <b>5 m/s</b><small>風速</small></span><span>◉ <b>72%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="ロンドンの3日間予報"></div>
+          </article>
+
+          <article class="weather-card" data-city="new-york" data-latitude="40.7128" data-longitude="-74.0060">
+            <div class="card-top"><span class="region">N. AMERICA</span><span class="local-time">20:00</span></div>
+            <div class="weather-icon partly" aria-label="晴れ時々くもり"><i></i></div>
+            <p class="country">アメリカ</p><h3>ニューヨーク</h3>
+            <div class="temp"><strong>24</strong><sup>°C</sup></div><p class="condition">晴れ時々くもり <span>・</span> 体感 25°</p>
+            <div class="details"><span>☂ <b>20%</b><small>降水</small></span><span>≋ <b>4 m/s</b><small>風速</small></span><span>◉ <b>61%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="ニューヨークの3日間予報"></div>
+          </article>
+
+          <article class="weather-card" data-city="sydney" data-latitude="-33.8688" data-longitude="151.2093">
+            <div class="card-top"><span class="region">OCEANIA</span><span class="local-time">10:00</span></div>
+            <div class="weather-icon rain" aria-label="雨"><i></i></div>
+            <p class="country">オーストラリア</p><h3>シドニー</h3>
+            <div class="temp"><strong>17</strong><sup>°C</sup></div><p class="condition">雨 <span>・</span> 体感 15°</p>
+            <div class="details"><span>☂ <b>80%</b><small>降水</small></span><span>≋ <b>7 m/s</b><small>風速</small></span><span>◉ <b>79%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="シドニーの3日間予報"></div>
+          </article>
+
+          <article class="weather-card" data-city="cairo" data-latitude="30.0444" data-longitude="31.2357">
+            <div class="card-top"><span class="region">AFRICA</span><span class="local-time">02:00</span></div>
+            <div class="weather-icon sun" aria-label="快晴"><i></i></div>
+            <p class="country">エジプト</p><h3>カイロ</h3>
+            <div class="temp"><strong>35</strong><sup>°C</sup></div><p class="condition">快晴 <span>・</span> 体感 36°</p>
+            <div class="details"><span>☂ <b>0%</b><small>降水</small></span><span>≋ <b>4 m/s</b><small>風速</small></span><span>◉ <b>34%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="カイロの3日間予報"></div>
+          </article>
+
+          <article class="weather-card" data-city="rio" data-latitude="-22.9068" data-longitude="-43.1729">
+            <div class="card-top"><span class="region">S. AMERICA</span><span class="local-time">21:00</span></div>
+            <div class="weather-icon moon" aria-label="晴れ"><i></i></div>
+            <p class="country">ブラジル</p><h3>リオデジャネイロ</h3>
+            <div class="temp"><strong>26</strong><sup>°C</sup></div><p class="condition">晴れ <span>・</span> 体感 27°</p>
+            <div class="details"><span>☂ <b>10%</b><small>降水</small></span><span>≋ <b>3 m/s</b><small>風速</small></span><span>◉ <b>66%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="リオデジャネイロの3日間予報"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="travel-tip" id="guide">
+        <div><p class="eyebrow">TRAVEL NOTE</p><h2>旅支度は、空模様から。</h2></div>
+        <p>訪れる街の気温と雨をチェックして、心地よい一日を。<br /><small>天気データ：<a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>（APIキー不要）</small></p>
+      </section>
     </main>
+
+    <footer><span>© 2026 SEKAI WEATHER</span><span>WEATHER CONNECTS US.</span></footer>
+    <script src="script.js"></script>
   </body>
 </html>
