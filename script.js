@@ -7,6 +7,7 @@ const refreshButtons = [
 ].filter(Boolean);
 
 const WEATHER_CITIES = [
+  { country: '日本', city: '福島市', latitude: 37.7608, longitude: 140.4747 },
   { country: '日本', city: '東京', latitude: 35.6762, longitude: 139.6503 },
   { country: '韓国', city: 'ソウル', latitude: 37.5665, longitude: 126.9780 },
   { country: '台湾', city: '台北', latitude: 25.0330, longitude: 121.5654 },
@@ -32,7 +33,7 @@ function setLoading(isLoading) {
 
 async function loadWeather() {
   setLoading(true);
-  weatherStatus.textContent = '東京・ソウル・台北の最新データを取得しています…';
+  weatherStatus.textContent = '福島市・東京・ソウル・台北の最新データを取得しています…';
 
   try {
     const forecasts = await Promise.all(WEATHER_CITIES.map(async (location) => {
@@ -75,7 +76,7 @@ async function loadWeather() {
       month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
     }).format(new Date());
 
-    weatherStatus.textContent = '3都市の最新データを表示しています。';
+    weatherStatus.textContent = '4都市の最新データを表示しています。';
     lastUpdated.textContent = `最終更新 ${now}`;
   } catch (error) {
     console.error(error);
