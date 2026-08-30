@@ -1,112 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="福島市を含む世界7都市の空模様を見渡せる天気予報ダッシュボードです。" />
-    <title>SEKAI WEATHER — 世界の天気予報</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="desuke41.hateblo.jpで公開している記事を紹介する、はてなブログの人気記事ページです。" />
+    <title>desuke41のブログ｜人気記事</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&amp;family=Noto+Sans+JP:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#" aria-label="SEKAI WEATHER ホーム">
-        <span class="brand-mark" aria-hidden="true">◒</span>
-        <span>SEKAI <b>WEATHER</b></span>
-      </a>
-      <nav aria-label="メインメニュー">
-        <a class="active" href="#forecast">世界の天気</a>
-        <a href="#guide">旅のヒント</a>
-        <button class="unit-switch" type="button" aria-label="温度単位を切り替える"><span class="selected">°C</span><span>°F</span></button>
+      <a class="logo" href="https://desuke41.hateblo.jp/" aria-label="desuke41のブログを開く"><span>d.</span><b data-blog-title>desuke41のブログ</b></a>
+      <nav aria-label="メインナビゲーション">
+        <a class="active" href="#popular">人気の記事</a>
+        <a href="#all-posts">新着記事</a>
+        <a href="https://desuke41.hateblo.jp/archive" target="_blank" rel="noreferrer">記事一覧へ ↗</a>
       </nav>
+      <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false">MENU</button>
     </header>
 
-    <main>
-      <section class="hero" id="forecast">
-        <p class="eyebrow">WORLD FORECAST</p>
-        <h1>空を見れば、<br /><em>世界が近くなる。</em></h1>
-        <p class="intro">世界の主要都市の空模様を、ひと目で。<br />次の旅にも、遠くにいる大切な人にも。</p>
-        <div class="update-row"><div class="updated" id="updated-at" role="status"><span></span>最新の天気を取得しています…</div><button class="refresh-button" id="refresh-weather" type="button">↻ 更新する</button></div>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="kicker">DESUKE41.HATEBLO.JP</p>
+          <h1 data-blog-title>desuke41の<br /><em>ブログ</em></h1>
+          <p class="lead" id="blog-description">desuke41.hateblo.jpで公開している記事の中から、<br />実際のアクセスをもとに選んだ注目記事と新着記事をご紹介します。</p>
+          <a class="primary-button" href="#popular">人気の記事を見る <span>↓</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div>
+          <div class="book"><i></i><i></i><span>READ<br />MORE</span></div>
+          <p>HATENA<br />BLOG</p>
+        </div>
+        <p class="scroll-note">SCROLL TO EXPLORE <span>↓</span></p>
       </section>
 
-      <section class="city-section" aria-labelledby="cities-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">AROUND THE WORLD</p>
-            <h2 id="cities-title">世界のいま</h2>
-          </div>
-          <p>現在の天気 ＋ 3日間予報</p>
+      <section class="popular-section" id="popular">
+        <div class="section-title">
+          <div><p class="kicker">MOST READ</p><h2>注目記事</h2></div>
+          <p>ブログのアクセス解析をもとに、<br />よく読まれている記事を掲載します。</p>
         </div>
-
-        <div class="city-grid">
-          <article class="weather-card featured" data-city="tokyo" data-latitude="35.6762" data-longitude="139.6503">
-            <div class="card-top"><span class="region">ASIA</span><span class="local-time">09:00</span></div>
-            <div class="weather-icon sun" aria-label="晴れ"><i></i></div>
-            <p class="country">日本</p><h3>東京</h3>
-            <div class="temp"><strong>31</strong><sup>°C</sup></div>
-            <p class="condition">晴れ <span>・</span> 体感 34°</p>
-            <div class="details"><span>☂ <b>10%</b><small>降水</small></span><span>≋ <b>3 m/s</b><small>風速</small></span><span>◉ <b>68%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="東京の3日間予報"></div>
-          </article>
-
-          <article class="weather-card" data-city="fukushima" data-latitude="37.7608" data-longitude="140.4747">
-            <div class="card-top"><span class="region">ASIA</span><span class="local-time">--:--</span></div>
-            <div class="weather-icon sun" aria-label="天気を取得中"><i></i></div>
-            <p class="country">日本・福島県</p><h3>福島市</h3>
-            <div class="temp"><strong>--</strong><sup>°C</sup></div><p class="condition">最新の天気を取得中</p>
-            <div class="details"><span>☂ <b>--%</b><small>降水</small></span><span>≋ <b>-- km/h</b><small>風速</small></span><span>◉ <b>--%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="福島市の3日間予報"></div>
-          </article>
-
-          <article class="weather-card" data-city="london" data-latitude="51.5072" data-longitude="-0.1276">
-            <div class="card-top"><span class="region">EUROPE</span><span class="local-time">01:00</span></div>
-            <div class="weather-icon cloud" aria-label="くもり"><i></i></div>
-            <p class="country">イギリス</p><h3>ロンドン</h3>
-            <div class="temp"><strong>19</strong><sup>°C</sup></div><p class="condition">くもり <span>・</span> 体感 18°</p>
-            <div class="details"><span>☂ <b>30%</b><small>降水</small></span><span>≋ <b>5 m/s</b><small>風速</small></span><span>◉ <b>72%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="ロンドンの3日間予報"></div>
-          </article>
-
-          <article class="weather-card" data-city="new-york" data-latitude="40.7128" data-longitude="-74.0060">
-            <div class="card-top"><span class="region">N. AMERICA</span><span class="local-time">20:00</span></div>
-            <div class="weather-icon partly" aria-label="晴れ時々くもり"><i></i></div>
-            <p class="country">アメリカ</p><h3>ニューヨーク</h3>
-            <div class="temp"><strong>24</strong><sup>°C</sup></div><p class="condition">晴れ時々くもり <span>・</span> 体感 25°</p>
-            <div class="details"><span>☂ <b>20%</b><small>降水</small></span><span>≋ <b>4 m/s</b><small>風速</small></span><span>◉ <b>61%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="ニューヨークの3日間予報"></div>
-          </article>
-
-          <article class="weather-card" data-city="sydney" data-latitude="-33.8688" data-longitude="151.2093">
-            <div class="card-top"><span class="region">OCEANIA</span><span class="local-time">10:00</span></div>
-            <div class="weather-icon rain" aria-label="雨"><i></i></div>
-            <p class="country">オーストラリア</p><h3>シドニー</h3>
-            <div class="temp"><strong>17</strong><sup>°C</sup></div><p class="condition">雨 <span>・</span> 体感 15°</p>
-            <div class="details"><span>☂ <b>80%</b><small>降水</small></span><span>≋ <b>7 m/s</b><small>風速</small></span><span>◉ <b>79%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="シドニーの3日間予報"></div>
-          </article>
-
-          <article class="weather-card" data-city="cairo" data-latitude="30.0444" data-longitude="31.2357">
-            <div class="card-top"><span class="region">AFRICA</span><span class="local-time">02:00</span></div>
-            <div class="weather-icon sun" aria-label="快晴"><i></i></div>
-            <p class="country">エジプト</p><h3>カイロ</h3>
-            <div class="temp"><strong>35</strong><sup>°C</sup></div><p class="condition">快晴 <span>・</span> 体感 36°</p>
-            <div class="details"><span>☂ <b>0%</b><small>降水</small></span><span>≋ <b>4 m/s</b><small>風速</small></span><span>◉ <b>34%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="カイロの3日間予報"></div>
-          </article>
-
-          <article class="weather-card" data-city="rio" data-latitude="-22.9068" data-longitude="-43.1729">
-            <div class="card-top"><span class="region">S. AMERICA</span><span class="local-time">21:00</span></div>
-            <div class="weather-icon moon" aria-label="晴れ"><i></i></div>
-            <p class="country">ブラジル</p><h3>リオデジャネイロ</h3>
-            <div class="temp"><strong>26</strong><sup>°C</sup></div><p class="condition">晴れ <span>・</span> 体感 27°</p>
-            <div class="details"><span>☂ <b>10%</b><small>降水</small></span><span>≋ <b>3 m/s</b><small>風速</small></span><span>◉ <b>66%</b><small>湿度</small></span></div><div class="mini-forecast" aria-label="リオデジャネイロの3日間予報"></div>
-          </article>
-        </div>
+        <div class="ranking" id="ranking"></div>
       </section>
 
-      <section class="travel-tip" id="guide">
-        <div><p class="eyebrow">TRAVEL NOTE</p><h2>旅支度は、空模様から。</h2></div>
-        <p>訪れる街の気温と雨をチェックして、心地よい一日を。<br /><small>天気データ：<a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a>（APIキー不要）</small></p>
+      <section class="all-section" id="all-posts">
+        <div class="section-title compact">
+          <div><p class="kicker">LATEST POSTS</p><h2>新着記事</h2></div>
+          <label class="search"><span>⌕</span><input id="search" type="search" placeholder="記事を検索" aria-label="記事を検索" /></label>
+        </div>
+        <p class="feed-status" id="feed-status" role="status">ブログから記事を読み込んでいます…</p>
+        <div class="article-grid" id="article-grid" aria-live="polite"></div>
+        <p class="empty" id="empty" hidden>条件に合う記事がありません。別のキーワードでお試しください。</p>
+      </section>
+
+      <section class="newsletter">
+        <div><p class="kicker">HATENA BLOG</p><h2>新しい記事を、<br />見逃さない。</h2></div>
+        <div><p>はてなブログの読者になって、<br />更新のお知らせを受け取りませんか？</p><a href="https://desuke41.hateblo.jp/" target="_blank" rel="noreferrer">ブログを読者登録する <span>↗</span></a></div>
       </section>
     </main>
 
-    <footer><span>© 2026 SEKAI WEATHER</span><span>WEATHER CONNECTS US.</span></footer>
+    <footer><a class="logo light" href="https://desuke41.hateblo.jp/"><span>d.</span><b data-blog-title>desuke41のブログ</b></a><p>Powered by Hatena Blog</p><p>© 2026 DESUKE41</p></footer>
     <script src="script.js"></script>
   </body>
 </html>
