@@ -62,21 +62,26 @@
         <div class="ranking" id="ranking"></div>
       </section>
 
-      <section class="all-section" id="all-posts">
-        <div class="section-title compact">
-          <div><p class="kicker">LATEST POSTS</p><h2>新着記事</h2></div>
-          <label class="search"><span>⌕</span><input id="search" type="search" placeholder="記事を検索" aria-label="記事を検索" /></label>
-        </div>
-        <p class="feed-status" id="feed-status" role="status">ブログから記事を読み込んでいます…</p>
-        <div class="article-grid" id="article-grid" aria-live="polite"></div>
-        <p class="empty" id="empty" hidden>条件に合う記事がありません。別のキーワードでお試しください。</p>
-      </section>
+          <div class="status-row">
+            <p class="weather-status" id="weather-status" role="status">各都市の天気を読み込んでいます…</p>
+            <span class="live-dot"><i></i> LIVE</span>
+          </div>
 
-      <section class="newsletter">
-        <div><p class="kicker">HATENA BLOG</p><h2>新しい記事を、<br />見逃さない。</h2></div>
-        <div><p>はてなブログの読者になって、<br />更新のお知らせを受け取りませんか？</p><a href="https://desuke41.hateblo.jp/" target="_blank" rel="noreferrer">ブログを読者登録する <span>↗</span></a></div>
-      </section>
-    </main>
+          <div class="weather-grid" id="weather-grid" aria-live="polite"></div>
+
+          <div class="weather-footer">
+            <p>天気データ: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo ↗</a></p>
+            <button class="text-refresh" id="refresh-weather-bottom" type="button">↻ 再読み込み</button>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="brand footer-brand"><span class="brand-mark">W</span><span><b>東アジア天気予報</b><small>EAST ASIA WEATHER</small></span></div>
+        <p>Fukushima · Tokyo · Seoul · Taipei</p>
+        <p>© 2026 DESUKE41</p>
+      </footer>
+    </div>
 
     <footer><a class="logo light" href="https://desuke41.hateblo.jp/"><span>d.</span><b>天気予報</b></a><p>Powered by Hatena Blog</p><p>© 2026 DESUKE41</p></footer>
     <script src="script.js"></script>

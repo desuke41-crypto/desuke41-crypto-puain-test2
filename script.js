@@ -33,29 +33,16 @@ const escapeHtml = (value) => value.replace(/[&<>'"]/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
 }[character]));
 
-function articleMarkup(article, index, ranked = false) {
-  const title = escapeHtml(article.title);
-  const category = escapeHtml(article.category || 'ブログ記事');
-  const rankingLabel = ranked ? article.rankLabel : 'NEW POST';
-  if (ranked) {
-    return `<a class="rank-item" href="${article.url}" target="_blank" rel="noreferrer">
-      <span class="rank-number">0${index + 1}</span>
-      <span class="rank-copy"><small>${category}</small><h3>${title}</h3></span>
-      <span class="rank-meta">${article.date}　·　${rankingLabel}</span><span class="arrow">↗</span>
-    </a>`;
-  }
-  return `<a class="article-card" href="${article.url}" target="_blank" rel="noreferrer">
-    <small>${category}</small><h3>${title}</h3><p>${escapeHtml(article.summary)}</p>
-    <span class="card-footer"><span>${article.date}</span><span>${rankingLabel}　↗</span></span>
-  </a>`;
-}
-
-function renderArticles() {
-  const query = search.value.trim().toLowerCase();
-  const visible = articles.filter((article) => `${article.title}${article.summary}${article.category}`.toLowerCase().includes(query));
-  grid.innerHTML = visible.map((article, index) => articleMarkup(article, index)).join('');
-  empty.hidden = visible.length > 0 || !articles.length;
-}
+const WEATHER_LABELS = {
+  0: ['快晴', '☀'], 1: ['晴れ', '🌤'], 2: ['一部曇り', '⛅'], 3: ['曇り', '☁'],
+  45: ['霧', '🌫'], 48: ['霧氷を伴う霧', '🌫'], 51: ['弱い霧雨', '🌦'], 53: ['霧雨', '🌦'],
+  55: ['強い霧雨', '🌧'], 56: ['弱い着氷性の霧雨', '🌧'], 57: ['着氷性の霧雨', '🌧'],
+  61: ['弱い雨', '🌦'], 63: ['雨', '🌧'], 65: ['強い雨', '🌧'], 66: ['弱い着氷性の雨', '🌧'],
+  67: ['着氷性の雨', '🌧'], 71: ['弱い雪', '🌨'], 73: ['雪', '🌨'], 75: ['強い雪', '❄'],
+  77: ['霧雪', '🌨'], 80: ['弱いにわか雨', '🌦'], 81: ['にわか雨', '🌧'], 82: ['激しいにわか雨', '⛈'],
+  85: ['弱いにわか雪', '🌨'], 86: ['強いにわか雪', '❄'], 95: ['雷雨', '⛈'],
+  96: ['ひょうを伴う雷雨', '⛈'], 99: ['激しいひょうを伴う雷雨', '⛈'],
+};
 
 async function loadWeather() {
   try {
@@ -156,71 +143,50 @@ function parseFeed(xml) {
   });
 }
 
-async function loadPopularArticles() {
-  const response = await fetch('popular-posts.json', { cache: 'no-store' });
-  if (!response.ok) throw new Error(`人気記事設定: HTTP ${response.status}`);
-  const data = await response.json();
-  if (!Array.isArray(data.articles)) throw new Error('人気記事設定の形式が正しくありません');
-  return data;
-}
+async function loadWeather() {
+  setLoading(true);
+  weatherStatus.textContent = '福島市・東京・ソウル・台北の最新データを取得しています…';
 
-function renderPopular(data) {
-  const popular = data.articles.slice(0, 5);
-  if (!popular.length) return false;
-  setRankingHeading('人気記事', 'PV RANKING', 'はてなブログのアクセス解析で確認したPV順位です。');
-  ranking.innerHTML = popular.map((article, index) => articleMarkup({
-    title: article.title || '無題の記事', url: article.url, category: article.category || '',
-    summary: article.summary || '', date: article.date || '',
-    rankLabel: Number.isFinite(article.pv) ? `${article.pv.toLocaleString()} PV` : 'アクセス解析順位',
-  }, index, true)).join('');
-  return true;
-}
-
-function setRankingHeading(title, kicker, description) {
-  document.querySelector('#ranking-title').textContent = title;
-  document.querySelector('#ranking-kicker').textContent = kicker;
-  document.querySelector('#ranking-description').textContent = description;
-}
-
-async function bookmarkCount(url) {
   try {
-    const response = await fetch(`https://bookmark.hatenaapis.com/count/entry?url=${encodeURIComponent(url)}`);
-    if (!response.ok) return { available: false, count: 0 };
-    return { available: true, count: Number(await response.text()) || 0 };
-  } catch (error) {
-    console.error(error);
-    return { available: false, count: 0 };
-  }
-}
+    const forecasts = await Promise.all(WEATHER_CITIES.map(async (location) => {
+      const parameters = new URLSearchParams({
+        latitude: location.latitude,
+        longitude: location.longitude,
+        current: 'temperature_2m,apparent_temperature,weather_code,wind_speed_10m',
+        daily: 'temperature_2m_max,temperature_2m_min,precipitation_probability_max',
+        timezone: 'auto',
+        forecast_days: '1',
+      });
 
-async function renderPublicRanking() {
-  const results = await Promise.all(articles.map((article) => bookmarkCount(article.url)));
-  if (results.some((result) => result.available)) {
-    const bookmarked = articles.map((article, index) => ({
-      ...article, bookmarks: results[index].count, rankLabel: `${results[index].count} users`,
-    })).sort((a, b) => b.bookmarks - a.bookmarks).slice(0, 5);
-    setRankingHeading('人気記事', 'HATENA BOOKMARKS', '実アクセス数は公開されていないため、はてなブックマーク数順です。');
-    ranking.innerHTML = bookmarked.map((article, index) => articleMarkup(article, index, true)).join('');
-    return;
-  }
-  const recent = articles.slice(0, 5).map((article) => ({ ...article, rankLabel: 'PVデータ利用不可' }));
-  setRankingHeading('新着記事（ランキングなし）', 'LATEST POSTS', 'PV数・はてなブックマーク数を取得できなかったため、新着順です。');
-  ranking.innerHTML = recent.map((article, index) => articleMarkup(article, index, true)).join('');
-}
+      const response = await fetch(`https://api.open-meteo.com/v1/forecast?${parameters}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`天気API: HTTP ${response.status}`);
+      return { location, forecast: await response.json() };
+    }));
 
-async function loadBlog(hasAccessRanking) {
-  try {
-    const response = await fetch(FEED_URL);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    articles = parseFeed(await response.text());
-    feedStatus.textContent = `${articles.length}件の公開記事をブログから読み込みました。`;
-    renderArticles();
-    if (!hasAccessRanking) await renderPublicRanking();
-  } catch (error) {
-    console.error(error);
-    feedStatus.textContent = '記事を取得できませんでした。時間をおいて再読み込みしてください。';
-  }
-}
+    weatherGrid.innerHTML = forecasts.map(({ location, forecast }) => {
+      const [condition, icon] = WEATHER_LABELS[forecast.current.weather_code] || ['天気情報', '🌡'];
+      const temperature = Math.round(forecast.current.temperature_2m);
+      const apparent = Math.round(forecast.current.apparent_temperature);
+      const maximum = Math.round(forecast.daily.temperature_2m_max[0]);
+      const minimum = Math.round(forecast.daily.temperature_2m_min[0]);
+      const rain = forecast.daily.precipitation_probability_max[0] ?? 0;
+      const wind = Math.round(forecast.current.wind_speed_10m);
+
+      return `<article class="weather-card">
+        <div class="weather-place"><p>${location.country}</p><h3>${location.city}</h3></div>
+        <span class="weather-icon" aria-hidden="true">${icon}</span>
+        <div class="weather-now"><strong>${temperature}<small>°C</small></strong><p>${condition}</p></div>
+        <dl>
+          <div><dt>最高 / 最低</dt><dd>${maximum}° / ${minimum}°</dd></div>
+          <div><dt>降水確率</dt><dd>${rain}%</dd></div>
+          <div><dt>体感 / 風速</dt><dd>${apparent}° / ${wind} km/h</dd></div>
+        </dl>
+      </article>`;
+    }).join('');
+
+    const now = new Intl.DateTimeFormat('ja-JP', {
+      month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
+    }).format(new Date());
 
 async function initialize() {
   loadWeather();
@@ -229,8 +195,11 @@ async function initialize() {
     hasAccessRanking = renderPopular(await loadPopularArticles());
   } catch (error) {
     console.error(error);
+    weatherStatus.textContent = '天気を取得できませんでした。時間をおいて再読み込みしてください。';
+    lastUpdated.textContent = 'データ更新に失敗しました';
+  } finally {
+    setLoading(false);
   }
-  await loadBlog(hasAccessRanking);
 }
 
 search.addEventListener('input', renderArticles);
