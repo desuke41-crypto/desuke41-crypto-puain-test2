@@ -14,17 +14,17 @@ const escapeHtml = (value) => value.replace(/[&<>'"]/g, (character) => ({
 function articleMarkup(article, index, ranked = false) {
   const title = escapeHtml(article.title);
   const category = escapeHtml(article.category || 'ブログ記事');
-  const bookmarkLabel = article.bookmarks ? `${article.bookmarks} USERS` : 'NEW POST';
+  const rankingLabel = ranked ? 'MOST READ' : 'NEW POST';
   if (ranked) {
     return `<a class="rank-item" href="${article.url}" target="_blank" rel="noreferrer">
       <span class="rank-number">0${index + 1}</span>
       <span class="rank-copy"><small>${category}</small><h3>${title}</h3></span>
-      <span class="rank-meta">${article.date}　·　${bookmarkLabel}</span><span class="arrow">↗</span>
+      <span class="rank-meta">${article.date}　·　${rankingLabel}</span><span class="arrow">↗</span>
     </a>`;
   }
   return `<a class="article-card" href="${article.url}" target="_blank" rel="noreferrer">
     <small>${category}</small><h3>${title}</h3><p>${escapeHtml(article.summary)}</p>
-    <span class="card-footer"><span>${article.date}</span><span>${bookmarkLabel}　↗</span></span>
+    <span class="card-footer"><span>${article.date}</span><span>${rankingLabel}　↗</span></span>
   </a>`;
 }
 
@@ -53,17 +53,29 @@ function parseFeed(xml) {
     return {
       title: entry.querySelector('title')?.textContent.trim() || '無題の記事',
       url: entry.querySelector('link[rel="alternate"]')?.getAttribute('href') || entry.querySelector('link')?.getAttribute('href') || BLOG_URL,
-      category: entry.querySelector('category')?.getAttribute('term') || '', summary, date, bookmarks: 0,
+      category: entry.querySelector('category')?.getAttribute('term') || '', summary, date,
     };
   });
 }
 
-async function bookmarkCount(url) {
-  try {
-    const response = await fetch(`https://bookmark.hatenaapis.com/count/entry?url=${encodeURIComponent(url)}`);
-    if (!response.ok) return 0;
-    return Number(await response.text()) || 0;
-  } catch { return 0; }
+async function loadPopularArticles() {
+  const response = await fetch('popular-posts.json', { cache: 'no-store' });
+  if (!response.ok) throw new Error(`人気記事設定: HTTP ${response.status}`);
+  const data = await response.json();
+  if (!Array.isArray(data.articles)) throw new Error('人気記事設定の形式が正しくありません');
+  return data;
+}
+
+function renderPopular(data) {
+  const popular = data.articles.slice(0, 5);
+  if (!popular.length) {
+    ranking.innerHTML = `<div class="load-error"><b>アクセス数に基づく注目記事は準備中です。</b><span>アクセス数は公開APIから取得できないため、管理画面の「アクセス解析」または公式の「注目記事」を確認して設定します。</span><a href="${BLOG_URL}archive" target="_blank" rel="noreferrer">すべての記事を見る ↗</a></div>`;
+    return;
+  }
+  ranking.innerHTML = popular.map((article, index) => articleMarkup({
+    title: article.title || '無題の記事', url: article.url, category: article.category || '',
+    summary: article.summary || '', date: article.date || '',
+  }, index, true)).join('');
 }
 
 async function loadBlog() {
@@ -71,18 +83,18 @@ async function loadBlog() {
     const response = await fetch(FEED_URL);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     articles = parseFeed(await response.text());
-    const counts = await Promise.all(articles.map((article) => bookmarkCount(article.url)));
-    articles.forEach((article, index) => { article.bookmarks = counts[index]; });
-    const popular = [...articles].sort((a, b) => b.bookmarks - a.bookmarks).slice(0, 5);
-    ranking.innerHTML = popular.map((article, index) => articleMarkup(article, index, true)).join('');
     feedStatus.textContent = `${articles.length}件の公開記事をブログから読み込みました。`;
     renderArticles();
   } catch (error) {
     console.error(error);
-    ranking.innerHTML = `<div class="load-error"><b>記事を読み込めませんでした。</b><span>ブログで人気記事をご覧ください。</span><a href="${BLOG_URL}archive" target="_blank" rel="noreferrer">desuke41のブログの記事一覧へ ↗</a></div>`;
     feedStatus.textContent = '記事を取得できませんでした。時間をおいて再読み込みしてください。';
   }
 }
+
+loadPopularArticles().then(renderPopular).catch((error) => {
+  console.error(error);
+  ranking.innerHTML = '<div class="load-error"><b>注目記事の設定を読み込めませんでした。</b><span>時間をおいて再読み込みしてください。</span></div>';
+});
 
 search.addEventListener('input', renderArticles);
 const menuButton = document.querySelector('.menu-button');
