@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="desuke41.hateblo.jpで公開している記事を紹介する、はてなブログの人気記事ページです。" />
+    <meta name="description" content="東京・ソウル・台北の現在の天気と今日の予報を表示する天気サイトです。" />
     <title>天気予報</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,30 +12,24 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="logo" href="https://desuke41.hateblo.jp/" aria-label="天気予報を開く"><span>d.</span><b>天気予報</b></a>
+      <a class="logo" href="#top" aria-label="天気予報トップへ"><span>d.</span><b>天気予報</b></a>
       <nav aria-label="メインナビゲーション">
-        <a class="active" href="#weather">天気予報</a>
-        <a href="#popular">人気の記事</a>
-        <a href="#all-posts">新着記事</a>
-        <a href="https://desuke41.hateblo.jp/archive" target="_blank" rel="noreferrer">記事一覧へ ↗</a>
+        <a class="active" href="#weather">日本・韓国・台湾の天気</a>
       </nav>
-      <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false">MENU</button>
     </header>
 
     <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <p class="kicker">DESUKE41.HATEBLO.JP</p>
+          <p class="kicker">EAST ASIA WEATHER</p>
           <h1>天気<br /><em>予報</em></h1>
-          <p class="lead" id="blog-description">desuke41.hateblo.jpで公開している記事の中から、<br />実際のアクセスをもとに選んだ注目記事と新着記事をご紹介します。</p>
-          <a class="primary-button" href="#popular">人気の記事を見る <span>↓</span></a>
+          <p class="lead">東京・ソウル・台北の現在の天気と、<br />今日の最高・最低気温や降水確率を表示します。</p>
+          <a class="primary-button" href="#weather">3都市の天気を見る <span>↓</span></a>
         </div>
         <div class="hero-art" aria-hidden="true">
           <div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div>
-          <div class="book"><i></i><i></i><span>READ<br />MORE</span></div>
-          <p>HATENA<br />BLOG</p>
         </div>
-        <p class="scroll-note">SCROLL TO EXPLORE <span>↓</span></p>
+        <p class="scroll-note">SCROLL TO WEATHER <span>↓</span></p>
       </section>
 
       <section class="weather-section" id="weather" aria-labelledby="weather-title">
@@ -47,32 +41,9 @@
         <div class="weather-grid" id="weather-grid" aria-live="polite"></div>
         <p class="weather-credit">天気データ: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo ↗</a></p>
       </section>
-
-      <section class="popular-section" id="popular">
-        <div class="section-title">
-          <div><p class="kicker" id="ranking-kicker">MOST READ</p><h2 id="ranking-title">人気記事</h2></div>
-          <p id="ranking-description">利用可能な公開データを確認して、<br />ランキングを読み込んでいます。</p>
-        </div>
-        <div class="ranking" id="ranking"></div>
-      </section>
-
-      <section class="all-section" id="all-posts">
-        <div class="section-title compact">
-          <div><p class="kicker">LATEST POSTS</p><h2>新着記事</h2></div>
-          <label class="search"><span>⌕</span><input id="search" type="search" placeholder="記事を検索" aria-label="記事を検索" /></label>
-        </div>
-        <p class="feed-status" id="feed-status" role="status">ブログから記事を読み込んでいます…</p>
-        <div class="article-grid" id="article-grid" aria-live="polite"></div>
-        <p class="empty" id="empty" hidden>条件に合う記事がありません。別のキーワードでお試しください。</p>
-      </section>
-
-      <section class="newsletter">
-        <div><p class="kicker">HATENA BLOG</p><h2>新しい記事を、<br />見逃さない。</h2></div>
-        <div><p>はてなブログの読者になって、<br />更新のお知らせを受け取りませんか？</p><a href="https://desuke41.hateblo.jp/" target="_blank" rel="noreferrer">ブログを読者登録する <span>↗</span></a></div>
-      </section>
     </main>
 
-    <footer><a class="logo light" href="https://desuke41.hateblo.jp/"><span>d.</span><b>天気予報</b></a><p>Powered by Hatena Blog</p><p>© 2026 DESUKE41</p></footer>
+    <footer><a class="logo light" href="#top"><span>d.</span><b>天気予報</b></a><p>Weather data by Open-Meteo</p><p>© 2026 DESUKE41</p></footer>
     <script src="script.js"></script>
   </body>
 </html>
