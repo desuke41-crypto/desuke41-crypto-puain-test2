@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ミニ天気</title>
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:transparent;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif}
+    body{overflow:hidden}
+    .bar{width:100%;height:72px;padding:8px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;background:#f6f9fc}
+    .city{min-width:0;padding:7px 4px;border-radius:10px;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.08);text-align:center;line-height:1.05}
+    .name{display:block;margin-bottom:4px;color:#44505c;font-size:10px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .weather{display:flex;align-items:center;justify-content:center;gap:3px;white-space:nowrap}
+    .icon{font-size:18px;line-height:1}
+    .temp{color:#172b3a;font-size:15px;font-weight:800;letter-spacing:-.04em}
+    .loading{grid-column:1/-1;display:grid;place-items:center;color:#6b7680;font-size:12px}
+    @media(max-width:280px){.bar{gap:3px;padding:6px}.city{padding-left:2px;padding-right:2px}.name{font-size:9px}.icon{font-size:16px}.temp{font-size:13px}}
+  </style>
+</head>
+<body>
+  <div class="bar" id="bar"><div class="loading">天気を読み込み中…</div></div>
+  <script>
+    const cities = [
+      { name:'福島', lat:37.7608, lon:140.4747 },
+      { name:'東京', lat:35.6762, lon:139.6503 },
+      { name:'ソウル', lat:37.5665, lon:126.9780 },
+      { name:'台北', lat:25.0330, lon:121.5654 }
+    ];
+    const icons = {
+      0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌧️',56:'🌧️',57:'🌧️',
+      61:'🌦️',63:'🌧️',65:'🌧️',66:'🌧️',67:'🌧️',71:'🌨️',73:'🌨️',75:'❄️',77:'🌨️',80:'🌦️',81:'🌧️',82:'⛈️',85:'🌨️',86:'❄️',95:'⛈️',96:'⛈️',99:'⛈️'
+    };
+    async function load(){
+      try{
+        const data = await Promise.all(cities.map(async c => {
+          const qs = new URLSearchParams({latitude:c.lat,longitude:c.lon,current:'temperature_2m,weather_code',timezone:'auto'});
+          const r = await fetch('https://api.open-meteo.com/v1/forecast?'+qs,{cache:'no-store'});
+          if(!r.ok) throw new Error('HTTP '+r.status);
+          return {city:c,forecast:await r.json()};
+        }));
+        document.getElementById('bar').innerHTML = data.map(({city,forecast}) => {
+          const t = Math.round(forecast.current.temperature_2m);
+          const i = icons[forecast.current.weather_code] || '🌡️';
+          return `<div class="city"><span class="name">${city.name}</span><div class="weather"><span class="icon">${i}</span><span class="temp">${t}°</span></div></div>`;
+        }).join('');
+      }catch(e){
+        document.getElementById('bar').innerHTML = '<div class="loading">天気を取得できませんでした</div>';
+      }
+    }
+    load();
+    setInterval(load, 30*60*1000);
+  </script>
+</body>
+</html>
