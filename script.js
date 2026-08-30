@@ -1,5 +1,10 @@
 const weatherGrid = document.querySelector('#weather-grid');
 const weatherStatus = document.querySelector('#weather-status');
+const lastUpdated = document.querySelector('#last-updated');
+const refreshButtons = [
+  document.querySelector('#refresh-weather'),
+  document.querySelector('#refresh-weather-bottom'),
+].filter(Boolean);
 
 const WEATHER_CITIES = [
   { country: '日本', city: '東京', latitude: 35.6762, longitude: 139.6503 },
@@ -18,7 +23,17 @@ const WEATHER_LABELS = {
   96: ['ひょうを伴う雷雨', '⛈'], 99: ['激しいひょうを伴う雷雨', '⛈'],
 };
 
+function setLoading(isLoading) {
+  refreshButtons.forEach((button) => {
+    button.disabled = isLoading;
+    button.textContent = isLoading ? '読み込み中…' : button.id === 'refresh-weather-bottom' ? '↻ 再読み込み' : '↻ 最新情報に更新';
+  });
+}
+
 async function loadWeather() {
+  setLoading(true);
+  weatherStatus.textContent = '東京・ソウル・台北の最新データを取得しています…';
+
   try {
     const forecasts = await Promise.all(WEATHER_CITIES.map(async (location) => {
       const parameters = new URLSearchParams({
@@ -30,7 +45,7 @@ async function loadWeather() {
         forecast_days: '1',
       });
 
-      const response = await fetch(`https://api.open-meteo.com/v1/forecast?${parameters}`);
+      const response = await fetch(`https://api.open-meteo.com/v1/forecast?${parameters}`, { cache: 'no-store' });
       if (!response.ok) throw new Error(`天気API: HTTP ${response.status}`);
       return { location, forecast: await response.json() };
     }));
@@ -56,11 +71,20 @@ async function loadWeather() {
       </article>`;
     }).join('');
 
-    weatherStatus.textContent = '東京・ソウル・台北の最新データを表示しています。';
+    const now = new Intl.DateTimeFormat('ja-JP', {
+      month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit',
+    }).format(new Date());
+
+    weatherStatus.textContent = '3都市の最新データを表示しています。';
+    lastUpdated.textContent = `最終更新 ${now}`;
   } catch (error) {
     console.error(error);
     weatherStatus.textContent = '天気を取得できませんでした。時間をおいて再読み込みしてください。';
+    lastUpdated.textContent = 'データ更新に失敗しました';
+  } finally {
+    setLoading(false);
   }
 }
 
+refreshButtons.forEach((button) => button.addEventListener('click', loadWeather));
 loadWeather();
