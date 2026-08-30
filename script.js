@@ -39,12 +39,7 @@ function parseFeed(xml) {
   const documentNode = new DOMParser().parseFromString(xml, 'application/xml');
   if (documentNode.querySelector('parsererror')) throw new Error('フィードを解析できませんでした');
   const feed = documentNode.documentElement;
-  const blogTitle = feed.querySelector(':scope > title')?.textContent.trim();
   const blogDescription = feed.querySelector(':scope > subtitle')?.textContent.trim();
-  if (blogTitle) {
-    document.querySelectorAll('[data-blog-title]').forEach((element) => { element.textContent = blogTitle; });
-    document.title = `${blogTitle}｜人気記事`;
-  }
   if (blogDescription) document.querySelector('#blog-description').textContent = blogDescription;
   return [...feed.querySelectorAll('entry')].map((entry) => {
     const rawSummary = entry.querySelector('summary, content')?.textContent || '';
