@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="desuke41の人気記事を、テーマ別・ランキング形式で楽しめる読みもの案内所です。" />
-    <title>desuke41｜読みもの案内所</title>
+    <meta name="description" content="desuke41.hateblo.jpで公開している記事を紹介する、はてなブログの人気記事ページです。" />
+    <title>desuke41のブログ｜人気記事</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&amp;family=Noto+Sans+JP:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
@@ -12,11 +12,11 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="logo" href="#top" aria-label="desuke41 ホーム"><span>d.</span><b>desuke41</b></a>
+      <a class="logo" href="https://desuke41.hateblo.jp/" aria-label="desuke41のブログを開く"><span>d.</span><b data-blog-title>desuke41のブログ</b></a>
       <nav aria-label="メインナビゲーション">
         <a class="active" href="#popular">人気の記事</a>
-        <a href="#all-posts">すべての記事</a>
-        <a href="https://desuke41.hateblo.jp/" target="_blank" rel="noreferrer">ブログへ ↗</a>
+        <a href="#all-posts">新着記事</a>
+        <a href="https://desuke41.hateblo.jp/archive" target="_blank" rel="noreferrer">記事一覧へ ↗</a>
       </nav>
       <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false">MENU</button>
     </header>
@@ -24,15 +24,15 @@
     <main id="top">
       <section class="hero">
         <div class="hero-copy">
-          <p class="kicker">DESUKE41'S READING PICKS</p>
-          <h1>気になる話を、<br /><em>ここから。</em></h1>
-          <p class="lead">暮らしの工夫から、お金のこと、デジタルのことまで。<br />よく読まれている記事を集めた、小さな案内所です。</p>
+          <p class="kicker">DESUKE41.HATEBLO.JP</p>
+          <h1 data-blog-title>desuke41の<br /><em>ブログ</em></h1>
+          <p class="lead" id="blog-description">desuke41.hateblo.jpで公開している記事の中から、<br />はてなブックマーク数の多い記事と新着記事をご紹介します。</p>
           <a class="primary-button" href="#popular">人気の記事を見る <span>↓</span></a>
         </div>
         <div class="hero-art" aria-hidden="true">
           <div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div>
           <div class="book"><i></i><i></i><span>READ<br />MORE</span></div>
-          <p>CURATED<br />STORIES</p>
+          <p>HATENA<br />BLOG</p>
         </div>
         <p class="scroll-note">SCROLL TO EXPLORE <span>↓</span></p>
       </section>
@@ -40,30 +40,28 @@
       <section class="popular-section" id="popular">
         <div class="section-title">
           <div><p class="kicker">MOST READ</p><h2>よく読まれている記事</h2></div>
-          <p>迷ったら、まずはこちらから。<br />みんなが読んでいる5本です。</p>
+          <p>公開記事を、はてなブックマーク数の<br />多い順に掲載します。</p>
         </div>
         <div class="ranking" id="ranking"></div>
       </section>
 
       <section class="all-section" id="all-posts">
         <div class="section-title compact">
-          <div><p class="kicker">FIND YOUR STORY</p><h2>テーマから探す</h2></div>
+          <div><p class="kicker">LATEST POSTS</p><h2>新着記事</h2></div>
           <label class="search"><span>⌕</span><input id="search" type="search" placeholder="記事を検索" aria-label="記事を検索" /></label>
         </div>
-        <div class="filters" role="group" aria-label="テーマで絞り込む">
-          <button class="selected" data-filter="all">すべて</button><button data-filter="お金">お金</button><button data-filter="暮らし">暮らし</button><button data-filter="デジタル">デジタル</button><button data-filter="学び">学び</button>
-        </div>
+        <p class="feed-status" id="feed-status" role="status">ブログから記事を読み込んでいます…</p>
         <div class="article-grid" id="article-grid" aria-live="polite"></div>
         <p class="empty" id="empty" hidden>条件に合う記事がありません。別のキーワードでお試しください。</p>
       </section>
 
       <section class="newsletter">
-        <div><p class="kicker">KEEP IN TOUCH</p><h2>新しい記事を、<br />見逃さない。</h2></div>
+        <div><p class="kicker">HATENA BLOG</p><h2>新しい記事を、<br />見逃さない。</h2></div>
         <div><p>はてなブログの読者になって、<br />更新のお知らせを受け取りませんか？</p><a href="https://desuke41.hateblo.jp/" target="_blank" rel="noreferrer">ブログを読者登録する <span>↗</span></a></div>
       </section>
     </main>
 
-    <footer><a class="logo light" href="#top"><span>d.</span><b>desuke41</b></a><p>日々の気づきを、ことばに。</p><p>© 2026 DESUKE41</p></footer>
+    <footer><a class="logo light" href="https://desuke41.hateblo.jp/"><span>d.</span><b data-blog-title>desuke41のブログ</b></a><p>Powered by Hatena Blog</p><p>© 2026 DESUKE41</p></footer>
     <script src="script.js"></script>
   </body>
 </html>
