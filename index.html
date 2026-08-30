@@ -3,47 +3,73 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="東京・ソウル・台北の現在の天気と今日の予報を表示する天気サイトです。" />
-    <title>天気予報</title>
+    <meta name="description" content="東京・ソウル・台北の現在の天気と今日の予報を表示する東アジア天気サイトです。" />
+    <title>東アジア天気予報</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&amp;family=Noto+Sans+JP:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <a class="logo" href="#top" aria-label="天気予報トップへ"><span>d.</span><b>天気予報</b></a>
-      <nav aria-label="メインナビゲーション">
-        <a class="active" href="#weather">日本・韓国・台湾の天気</a>
-      </nav>
-    </header>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="東アジア天気予報トップへ">
+          <span class="brand-mark">W</span>
+          <span><b>東アジア天気予報</b><small>EAST ASIA WEATHER</small></span>
+        </a>
+        <a class="header-link" href="#weather">3都市の天気を見る ↓</a>
+      </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="kicker">EAST ASIA WEATHER</p>
-          <h1>天気<br /><em>予報</em></h1>
-          <p class="lead">東京・ソウル・台北の現在の天気と、<br />今日の最高・最低気温や降水確率を表示します。</p>
-          <a class="primary-button" href="#weather">3都市の天気を見る <span>↓</span></a>
-        </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div>
-        </div>
-        <p class="scroll-note">SCROLL TO WEATHER <span>↓</span></p>
-      </section>
+      <main id="top">
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">TOKYO · SEOUL · TAIPEI</p>
+            <h1>今日の空を、<br /><span>ひと目で。</span></h1>
+            <p class="lead">日本・韓国・台湾の主要3都市を、ひとつの画面で比較。<br />現在気温、体感温度、降水確率、風速まで確認できます。</p>
+            <div class="hero-actions">
+              <a class="primary-button" href="#weather">天気を見る</a>
+              <button class="refresh-button" id="refresh-weather" type="button">↻ 最新情報に更新</button>
+            </div>
+            <p class="updated" id="last-updated">最新データを読み込んでいます…</p>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="glow glow-one"></div>
+            <div class="glow glow-two"></div>
+            <div class="weather-orb">☀</div>
+            <p>WEATHER<br />DASHBOARD</p>
+          </div>
+        </section>
 
-      <section class="weather-section" id="weather" aria-labelledby="weather-title">
-        <div class="section-title">
-          <div><p class="kicker">EAST ASIA WEATHER</p><h2 id="weather-title">日本・韓国・台湾の天気</h2></div>
-          <p>東京、ソウル、台北の現在の天気と<br />今日の予報をお届けします。</p>
-        </div>
-        <p class="weather-status" id="weather-status" role="status">各都市の天気を読み込んでいます…</p>
-        <div class="weather-grid" id="weather-grid" aria-live="polite"></div>
-        <p class="weather-credit">天気データ: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo ↗</a></p>
-      </section>
-    </main>
+        <section class="weather-section" id="weather" aria-labelledby="weather-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow dark">LIVE WEATHER</p>
+              <h2 id="weather-title">3都市の現在地</h2>
+            </div>
+            <p>東京・ソウル・台北の最新データを表示します。<br />カードはスマートフォンでも縦に並んで見やすくなります。</p>
+          </div>
 
-    <footer><a class="logo light" href="#top"><span>d.</span><b>天気予報</b></a><p>Weather data by Open-Meteo</p><p>© 2026 DESUKE41</p></footer>
+          <div class="status-row">
+            <p class="weather-status" id="weather-status" role="status">各都市の天気を読み込んでいます…</p>
+            <span class="live-dot"><i></i> LIVE</span>
+          </div>
+
+          <div class="weather-grid" id="weather-grid" aria-live="polite"></div>
+
+          <div class="weather-footer">
+            <p>天気データ: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo ↗</a></p>
+            <button class="text-refresh" id="refresh-weather-bottom" type="button">↻ 再読み込み</button>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div class="brand footer-brand"><span class="brand-mark">W</span><span><b>東アジア天気予報</b><small>EAST ASIA WEATHER</small></span></div>
+        <p>Tokyo · Seoul · Taipei</p>
+        <p>© 2026 DESUKE41</p>
+      </footer>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
