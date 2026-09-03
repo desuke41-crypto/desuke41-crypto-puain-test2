@@ -1,75 +1,54 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="福島市・東京・ソウル・台北の現在の天気と今日の予報を表示する東アジア天気サイトです。" />
-    <title>東アジア天気予報</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&amp;family=Noto+Sans+JP:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="#top" aria-label="東アジア天気予報トップへ">
-          <span class="brand-mark">W</span>
-          <span><b>東アジア天気予報</b><small>EAST ASIA WEATHER</small></span>
-        </a>
-        <a class="header-link" href="#weather">4都市の天気を見る ↓</a>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="desuke41のブログ記事を人気順で眺め、再投稿候補を見つけるための読みもの案内所です。" />
+  <title>desuke41｜読みもの案内所</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&amp;family=Noto+Sans+JP:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#top"><span>d.</span><b>読みもの案内所</b></a>
+    <nav aria-label="メインナビゲーション"><a href="#popular">人気順</a><a href="#repost">再投稿候補</a><a href="#all-posts">すべての記事</a></nav>
+    <a class="blog-link" href="https://desuke41.hateblo.jp/" target="_blank" rel="noreferrer">ブログへ ↗</a>
+    <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false">MENU</button>
+  </header>
 
-      <main id="top">
-        <section class="hero">
-          <div class="hero-copy">
-            <p class="eyebrow">FUKUSHIMA · TOKYO · SEOUL · TAIPEI</p>
-            <h1>今日の空を、<br /><span>ひと目で。</span></h1>
-            <p class="lead">福島市・東京・ソウル・台北を、ひとつの画面で比較。<br />現在気温、体感温度、降水確率、風速まで確認できます。</p>
-            <div class="hero-actions">
-              <a class="primary-button" href="#weather">天気を見る</a>
-              <button class="refresh-button" id="refresh-weather" type="button">↻ 最新情報に更新</button>
-            </div>
-            <p class="updated" id="last-updated">最新データを読み込んでいます…</p>
-          </div>
-          <div class="hero-visual" aria-hidden="true">
-            <div class="glow glow-one"></div>
-            <div class="glow glow-two"></div>
-            <div class="weather-orb">☀</div>
-            <p>WEATHER<br />DASHBOARD</p>
-          </div>
-        </section>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">DESUKE41 BLOG ARCHIVE</p>
+        <h1>もう一度、<br /><em>読んでほしい。</em></h1>
+        <p>これまで書いてきた記事を、ひとつの場所に。人気の読みものから、いま再投稿したい一本まで見つけられます。</p>
+        <div class="hero-actions"><a class="primary-button" href="#popular">人気順に見る ↓</a><span id="hero-count">記事を集計中…</span></div>
+      </div>
+      <div class="hero-note"><span>EDITOR'S NOTE</span><p>過去の記事は、<br />未来の誰かには<br /><strong>新しい記事。</strong></p><i>01 — ARCHIVE</i></div>
+    </section>
 
-        <section class="weather-section" id="weather" aria-labelledby="weather-title">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow dark">LIVE WEATHER</p>
-              <h2 id="weather-title">4都市の現在地</h2>
-            </div>
-            <p>福島市・東京・ソウル・台北の最新データを表示します。<br />カードはスマートフォンでも縦に並んで見やすくなります。</p>
-          </div>
+    <section class="popular-section" id="popular">
+      <div class="section-title"><div><p class="kicker">MOST READ</p><h2>人気の記事</h2></div><p id="ranking-description">公開データを確認して、人気順に並べています。</p></div>
+      <p class="data-status" id="feed-status" role="status">ブログから記事を読み込んでいます…</p>
+      <div class="ranking" id="ranking" aria-live="polite"></div>
+    </section>
 
-          <div class="status-row">
-            <p class="weather-status" id="weather-status" role="status">各都市の天気を読み込んでいます…</p>
-            <span class="live-dot"><i></i> LIVE</span>
-          </div>
+    <section class="repost-section" id="repost">
+      <div class="section-title light"><div><p class="kicker">REPOST PICKS</p><h2>いま、再投稿するなら。</h2></div><p>読まれた実績と記事の鮮度から、もう一度届けたい記事を選びました。</p></div>
+      <div class="repost-grid" id="repost-grid" aria-live="polite"><p class="loading-light">候補を選定中…</p></div>
+      <p class="repost-note">※ 公開日から時間が経ち、反応が多い記事を優先しています。内容を最新情報に更新してからの再投稿がおすすめです。</p>
+    </section>
 
-          <div class="weather-grid" id="weather-grid" aria-live="polite"></div>
-
-          <div class="weather-footer">
-            <p>天気データ: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo ↗</a></p>
-            <button class="text-refresh" id="refresh-weather-bottom" type="button">↻ 再読み込み</button>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <div class="brand footer-brand"><span class="brand-mark">W</span><span><b>東アジア天気予報</b><small>EAST ASIA WEATHER</small></span></div>
-        <p>Fukushima · Tokyo · Seoul · Taipei</p>
-        <p>© 2026 DESUKE41</p>
-      </footer>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
+    <section class="all-section" id="all-posts">
+      <div class="section-title compact"><div><p class="kicker">ALL STORIES</p><h2>すべての記事</h2></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="タイトル・カテゴリから検索" aria-label="記事を検索" /></label></div>
+      <div class="filter-row"><button class="filter active" data-category="all">すべて</button><div id="category-filters"></div><span id="result-count"></span></div>
+      <div class="article-grid" id="article-grid" aria-live="polite"></div>
+      <p class="empty" id="empty" hidden>条件に合う記事がありません。</p>
+    </section>
+  </main>
+  <footer><a class="logo light-logo" href="#top"><span>d.</span><b>読みもの案内所</b></a><p>desuke41.hateblo.jp</p><p>© 2026 DESUKE41</p></footer>
+  <script src="script.js"></script>
+</body>
 </html>
