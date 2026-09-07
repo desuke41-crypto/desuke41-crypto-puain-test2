@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="desuke41のブログ記事を人気順で眺め、再投稿候補を見つけるための読みもの案内所です。" />
+  <meta name="description" content="福島・東京・ソウル・台北の天気と、desuke41のブログ記事をまとめて確認できる読みもの案内所です。" />
+  <meta property="og:title" content="desuke41｜読みもの案内所" />
+  <meta property="og:description" content="4都市の天気、人気記事、再投稿候補、新着記事をひとつの画面で確認できます。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary" />
   <title>desuke41｜読みもの案内所</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,7 +18,12 @@
 <body>
   <header class="site-header">
     <a class="logo" href="#top"><span>d.</span><b>読みもの案内所</b></a>
-    <nav aria-label="メインナビゲーション"><a href="#popular">人気順</a><a href="#repost">再投稿候補</a><a href="#all-posts">すべての記事</a></nav>
+    <nav aria-label="メインナビゲーション">
+      <a href="#weather">天気</a>
+      <a href="#popular">人気順</a>
+      <a href="#repost">再投稿候補</a>
+      <a href="#all-posts">すべての記事</a>
+    </nav>
     <a class="blog-link" href="https://desuke41.hateblo.jp/" target="_blank" rel="noreferrer">ブログへ ↗</a>
     <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false">MENU</button>
   </header>
@@ -24,9 +34,28 @@
         <p class="kicker">DESUKE41 BLOG ARCHIVE</p>
         <h1>もう一度、<br /><em>読んでほしい。</em></h1>
         <p>これまで書いてきた記事を、ひとつの場所に。人気の読みものから、いま再投稿したい一本まで見つけられます。</p>
-        <div class="hero-actions"><a class="primary-button" href="#popular">人気順に見る ↓</a><span id="hero-count">記事を集計中…</span></div>
+        <div class="hero-actions"><a class="primary-button" href="#weather">4都市の天気を見る ↓</a><span id="hero-count">記事を集計中…</span></div>
       </div>
       <div class="hero-note"><span>EDITOR'S NOTE</span><p>過去の記事は、<br />未来の誰かには<br /><strong>新しい記事。</strong></p><i>01 — ARCHIVE</i></div>
+    </section>
+
+    <section class="weather-section" id="weather" aria-labelledby="weather-title">
+      <div class="section-title">
+        <div><p class="kicker">EAST ASIA WEATHER</p><h2 id="weather-title">4都市の天気</h2></div>
+        <p>福島市・東京・ソウル・台北の現在の天気と、今日の予報を30分ごとに更新します。</p>
+      </div>
+      <div class="weather-toolbar">
+        <p class="data-status" id="weather-status" role="status">4都市の天気を読み込んでいます…</p>
+        <button class="weather-refresh" id="refresh-weather" type="button">↻ 最新情報に更新</button>
+      </div>
+      <div class="weather-grid" id="weather-grid" aria-live="polite" aria-busy="true">
+        <article class="weather-card weather-card-loading" id="weather-fukushima"><div class="weather-place"><p>日本</p><h3>福島市</h3></div><p>読み込み中…</p></article>
+        <article class="weather-card weather-card-loading" id="weather-tokyo"><div class="weather-place"><p>日本</p><h3>東京</h3></div><p>読み込み中…</p></article>
+        <article class="weather-card weather-card-loading" id="weather-seoul"><div class="weather-place"><p>韓国</p><h3>ソウル</h3></div><p>読み込み中…</p></article>
+        <article class="weather-card weather-card-loading" id="weather-taipei"><div class="weather-place"><p>台湾</p><h3>台北</h3></div><p>読み込み中…</p></article>
+      </div>
+      <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+      <p class="weather-credit">天気データ: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo ↗</a></p>
     </section>
 
     <section class="popular-section" id="popular">
@@ -48,6 +77,7 @@
       <p class="empty" id="empty" hidden>条件に合う記事がありません。</p>
     </section>
   </main>
+
   <footer><a class="logo light-logo" href="#top"><span>d.</span><b>読みもの案内所</b></a><p>desuke41.hateblo.jp</p><p>© 2026 DESUKE41</p></footer>
   <script src="script.js"></script>
 </body>
