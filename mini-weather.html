@@ -8,14 +8,14 @@
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:transparent;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif}
     body{overflow:hidden}
-    .bar{width:100%;height:72px;padding:7px;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:4px;background:#f6f9fc}
-    .city{min-width:0;padding:7px 2px;border-radius:9px;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.08);text-align:center;line-height:1.05}
-    .name{display:block;margin-bottom:4px;color:#44505c;font-size:9px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .weather{display:flex;align-items:center;justify-content:center;gap:2px;white-space:nowrap}
-    .icon{font-size:16px;line-height:1}
-    .temp{color:#172b3a;font-size:13px;font-weight:800;letter-spacing:-.04em}
-    .loading{grid-column:1/-1;display:grid;place-items:center;color:#6b7680;font-size:12px}
-    @media(max-width:280px){.bar{gap:2px;padding:5px}.city{padding-left:1px;padding-right:1px}.name{font-size:8px}.icon{font-size:14px}.temp{font-size:11px}}
+    .bar{width:100%;height:132px;padding:8px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:8px;background:#f6f9fc}
+    .city{min-width:0;padding:8px 5px;border-radius:10px;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.08);text-align:center;line-height:1.05;display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .name{display:block;margin-bottom:5px;color:#44505c;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+    .weather{display:flex;align-items:center;justify-content:center;gap:4px;white-space:nowrap}
+    .icon{font-size:20px;line-height:1}
+    .temp{color:#172b3a;font-size:16px;font-weight:800;letter-spacing:-.04em}
+    .loading{grid-column:1/-1;grid-row:1/-1;display:grid;place-items:center;color:#6b7680;font-size:12px}
+    @media(max-width:280px){.bar{height:124px;gap:6px;padding:6px}.city{padding:6px 3px}.name{font-size:10px}.icon{font-size:18px}.temp{font-size:14px}}
   </style>
 </head>
 <body>
