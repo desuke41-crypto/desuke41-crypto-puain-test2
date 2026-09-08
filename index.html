@@ -3,82 +3,77 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="福島・東京・ソウル・台北の天気と、desuke41のブログ記事をまとめて確認できる読みもの案内所です。" />
-  <meta property="og:title" content="desuke41｜読みもの案内所" />
-  <meta property="og:description" content="4都市の天気、人気記事、再投稿候補、新着記事をひとつの画面で確認できます。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="ja_JP" />
-  <meta name="twitter:card" content="summary" />
-  <title>desuke41｜読みもの案内所</title>
+  <meta name="description" content="まちのカーサポートのオイル交換とスマホ操作説明サービスのご案内。" />
+  <title>オイル交換＆スマホ操作説明｜まちのカーサポート</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&amp;family=Noto+Sans+JP:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Noto+Sans+JP:wght@500;700;800;900&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <a class="logo" href="#top"><span>d.</span><b>読みもの案内所</b></a>
-    <nav aria-label="メインナビゲーション">
-      <a href="#weather">天気</a>
-      <a href="#popular">人気順</a>
-      <a href="#repost">再投稿候補</a>
-      <a href="#all-posts">すべての記事</a>
-    </nav>
-    <a class="blog-link" href="https://desuke41.hateblo.jp/" target="_blank" rel="noreferrer">ブログへ ↗</a>
-    <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false">MENU</button>
-  </header>
+  <main class="flyer">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="まちのカーサポート トップ">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <span><b>まちのカーサポート</b><small>MACHI NO CAR SUPPORT</small></span>
+      </a>
+      <p><span>予約優先</span> 土・日・祝も営業</p>
+    </header>
 
-  <main id="top">
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="hero-copy">
-        <p class="kicker">DESUKE41 BLOG ARCHIVE</p>
-        <h1>もう一度、<br /><em>読んでほしい。</em></h1>
-        <p>これまで書いてきた記事を、ひとつの場所に。人気の読みものから、いま再投稿したい一本まで見つけられます。</p>
-        <div class="hero-actions"><a class="primary-button" href="#weather">4都市の天気を見る ↓</a><span id="hero-count">記事を集計中…</span></div>
+        <p class="eyebrow">QUICK &amp; RELIABLE MAINTENANCE</p>
+        <h1>愛車の元気は、<br /><em>オイル</em>から。</h1>
+        <p class="lead">確かな作業で、いつものドライブに安心を。<br />国産乗用車ならメーカー問わずご相談ください。</p>
+        <a class="call-button" href="tel:0000000000"><span>ご予約・お問い合わせ</span><strong>00-0000-0000</strong></a>
       </div>
-      <div class="hero-note"><span>EDITOR'S NOTE</span><p>過去の記事は、<br />未来の誰かには<br /><strong>新しい記事。</strong></p><i>01 — ARCHIVE</i></div>
+      <div class="oil-visual" aria-label="エンジンオイル交換のイメージ">
+        <span class="speed-line line-one"></span><span class="speed-line line-two"></span>
+        <div class="oil-can"><i>PREMIUM</i><b>MOTOR<br />OIL</b><small>5W-30</small></div>
+        <div class="oil-drop"></div>
+        <p>ENGINE OIL<br /><strong>CHANGE</strong></p>
+      </div>
+      <div class="hero-price" aria-label="オイル交換価格">
+        <span>工賃込み</span><p>軽自動車</p><strong><small>税込</small> 3,300<em>円〜</em></strong>
+      </div>
     </section>
 
-    <section class="weather-section" id="weather" aria-labelledby="weather-title">
-      <div class="section-title">
-        <div><p class="kicker">EAST ASIA WEATHER</p><h2 id="weather-title">4都市の天気</h2></div>
-        <p>福島市・東京・ソウル・台北の現在の天気と、今日の予報を30分ごとに更新します。</p>
-      </div>
-      <div class="weather-toolbar">
-        <p class="data-status" id="weather-status" role="status">4都市の天気を読み込んでいます…</p>
-        <button class="weather-refresh" id="refresh-weather" type="button">↻ 最新情報に更新</button>
-      </div>
-      <div class="weather-grid" id="weather-grid" aria-live="polite" aria-busy="true">
-        <article class="weather-card weather-card-loading" id="weather-fukushima"><div class="weather-place"><p>日本</p><h3>福島市</h3></div><p>読み込み中…</p></article>
-        <article class="weather-card weather-card-loading" id="weather-tokyo"><div class="weather-place"><p>日本</p><h3>東京</h3></div><p>読み込み中…</p></article>
-        <article class="weather-card weather-card-loading" id="weather-seoul"><div class="weather-place"><p>韓国</p><h3>ソウル</h3></div><p>読み込み中…</p></article>
-        <article class="weather-card weather-card-loading" id="weather-taipei"><div class="weather-place"><p>台湾</p><h3>台北</h3></div><p>読み込み中…</p></article>
-      </div>
-      <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
-      <p class="weather-credit">天気データ: <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo ↗</a></p>
+    <section class="features" aria-labelledby="features-title">
+      <div class="section-heading"><span>WHY CHOOSE US</span><h2 id="features-title">いつものお店で、<br />気軽にメンテナンス。</h2></div>
+      <ol>
+        <li><span>01</span><div><strong>スピーディー</strong><small>作業時間 約30分〜</small></div></li>
+        <li><span>02</span><div><strong>分かりやすい料金</strong><small>作業前にしっかりご説明</small></div></li>
+        <li><span>03</span><div><strong>無料安全チェック</strong><small>タイヤ・バッテリーも確認</small></div></li>
+      </ol>
     </section>
 
-    <section class="popular-section" id="popular">
-      <div class="section-title"><div><p class="kicker">MOST READ</p><h2>人気の記事</h2></div><p id="ranking-description">公開データを確認して、人気順に並べています。</p></div>
-      <p class="data-status" id="feed-status" role="status">ブログから記事を読み込んでいます…</p>
-      <div class="ranking" id="ranking" aria-live="polite"></div>
+    <section class="smartphone" id="smartphone" aria-labelledby="smartphone-title">
+      <div class="phone-art" aria-hidden="true">
+        <div class="phone"><span></span><div class="screen"><i>あ</i><b>スマホを<br />もっと身近に</b><small>ゆっくり、一緒に。</small></div></div>
+        <span class="tap">TAP!</span>
+      </div>
+      <div class="smartphone-copy">
+        <p class="eyebrow">NEW SUPPORT SERVICE</p>
+        <h2 id="smartphone-title"><span>待ち時間に</span><br />スマホの「困った」<br />聞いてみませんか？</h2>
+        <p>オイル交換の待ち時間を使って、スタッフがスマホの操作をやさしくご説明します。</p>
+        <ul>
+          <li>LINE・写真の使い方</li><li>文字サイズの変更</li><li>アプリの入れ方</li><li>便利な地図・検索</li>
+        </ul>
+        <div class="support-price"><span>スマホ操作説明<br /><small>15分／予約制</small></span><strong>500<em>円</em></strong><b>税込</b></div>
+        <p class="note">※ データ移行・修理・契約変更は対象外です。内容によりお答えできない場合があります。</p>
+      </div>
     </section>
 
-    <section class="repost-section" id="repost">
-      <div class="section-title light"><div><p class="kicker">REPOST PICKS</p><h2>いま、再投稿するなら。</h2></div><p>読まれた実績と記事の鮮度から、もう一度届けたい記事を選びました。</p></div>
-      <div class="repost-grid" id="repost-grid" aria-live="polite"><p class="loading-light">候補を選定中…</p></div>
-      <p class="repost-note">※ 公開日から時間が経ち、反応が多い記事を優先しています。内容を最新情報に更新してからの再投稿がおすすめです。</p>
+    <section class="cta" aria-label="ご予約案内">
+      <div><p>OIL CHANGE + SMARTPHONE SUPPORT</p><h2>クルマもスマホも、<br />もっと快適に。</h2></div>
+      <div class="cta-details">
+        <a href="tel:0000000000"><small>お電話でご予約ください</small><strong>00-0000-0000</strong></a>
+        <p><b>営業時間</b> 9:00–18:00<br /><b>定休日</b> 毎週水曜日</p>
+      </div>
     </section>
 
-    <section class="all-section" id="all-posts">
-      <div class="section-title compact"><div><p class="kicker">ALL STORIES</p><h2>すべての記事</h2></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="タイトル・カテゴリから検索" aria-label="記事を検索" /></label></div>
-      <div class="filter-row"><button class="filter active" data-category="all">すべて</button><div id="category-filters"></div><span id="result-count"></span></div>
-      <div class="article-grid" id="article-grid" aria-live="polite"></div>
-      <p class="empty" id="empty" hidden>条件に合う記事がありません。</p>
-    </section>
+    <footer><b>まちのカーサポート</b><span>〒000-0000 ○○県○○市○○ 0-0-0</span><small>※ 掲載価格・内容は予告なく変更する場合があります。</small></footer>
   </main>
-
-  <footer><a class="logo light-logo" href="#top"><span>d.</span><b>読みもの案内所</b></a><p>desuke41.hateblo.jp</p><p>© 2026 DESUKE41</p></footer>
   <script src="script.js"></script>
 </body>
 </html>
