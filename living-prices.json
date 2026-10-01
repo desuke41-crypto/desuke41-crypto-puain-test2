@@ -1,4 +1,36 @@
-{"schemaVersion":1,"items":[
-{"id":"cpi","value":1.9,"change":null,"period":"2026年8月分","note":"指数 102.2（2025年＝100）","publishedAt":"2026-09-18","checkedAt":"2026-09-30","source":"https://www.stat.go.jp/data/cpi/sokuhou/tsuki/index-z.html"},
-{"id":"rice","value":2934,"change":-37,"period":"2026年9月14日〜20日","note":"全国スーパー平均","publishedAt":"2026-09-25","checkedAt":"2026-09-30","source":"https://www.maff.go.jp/j/nousan/kokumotu/kome_kakaku.html"},
-{"id":"gas","value":170.2,"change":0.3,"period":"2026年9月28日調査","note":"全国・レギュラー","publishedAt":"2026-09-30","checkedAt":"2026-09-30","source":"https://www.enecho.meti.go.jp/statistics/petroleum_and_lpgas/pl007/results.html","verificationSource":"https://fu.minkabu.jp/news/717445"}]}
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "cpi",
+      "value": 1.9,
+      "change": null,
+      "period": "2026年8月分",
+      "note": "指数 102.2（2025年＝100）",
+      "publishedAt": "2026-09-18",
+      "checkedAt": "2026-10-01",
+      "source": "https://www.stat.go.jp/data/cpi/sokuhou/tsuki/index-z.html"
+    },
+    {
+      "id": "rice",
+      "value": 2934,
+      "change": -37,
+      "period": "2026年9月14日〜20日",
+      "note": "全国スーパー平均",
+      "publishedAt": "2026-09-25",
+      "checkedAt": "2026-10-01",
+      "source": "https://www.maff.go.jp/j/nousan/kokumotu/kome_kakaku.html"
+    },
+    {
+      "id": "gas",
+      "value": 170.2,
+      "change": 0.3,
+      "period": "2026年9月28日調査",
+      "note": "全国・レギュラー",
+      "publishedAt": "2026-09-30",
+      "checkedAt": "2026-10-01",
+      "source": "https://www.enecho.meti.go.jp/statistics/petroleum_and_lpgas/pl007/results.html",
+      "verificationSource": "https://fu.minkabu.jp/news/717445"
+    }
+  ]
+}
