@@ -8,17 +8,17 @@
       "period": "2026年8月分",
       "note": "指数 102.2（2025年＝100）",
       "publishedAt": "2026-09-18",
-      "checkedAt": "2026-10-01",
+      "checkedAt": "2026-10-04",
       "source": "https://www.stat.go.jp/data/cpi/sokuhou/tsuki/index-z.html"
     },
     {
       "id": "rice",
-      "value": 2934,
-      "change": -37,
-      "period": "2026年9月14日〜20日",
+      "value": 2926,
+      "change": -8,
+      "period": "2026年9月21日〜27日",
       "note": "全国スーパー平均",
-      "publishedAt": "2026-09-25",
-      "checkedAt": "2026-10-01",
+      "publishedAt": "2026-10-02",
+      "checkedAt": "2026-10-04",
       "source": "https://www.maff.go.jp/j/nousan/kokumotu/kome_kakaku.html"
     },
     {
@@ -28,7 +28,7 @@
       "period": "2026年9月28日調査",
       "note": "全国・レギュラー",
       "publishedAt": "2026-09-30",
-      "checkedAt": "2026-10-01",
+      "checkedAt": "2026-10-04",
       "source": "https://www.enecho.meti.go.jp/statistics/petroleum_and_lpgas/pl007/results.html",
       "verificationSource": "https://fu.minkabu.jp/news/717445"
     }
