@@ -15,7 +15,7 @@ let articles = [];
 let activeCategory = 'all';
 
 const WEATHER_CITIES = [
-  { country: '日本', city: '福島市', slug: 'fukushima', latitude: 37.7608, longitude: 140.4747 },
+  { country: '日本', city: '福島市笹木野', slug: 'fukushima', latitude: 37.7661, longitude: 140.4253 },
   { country: '日本', city: '東京', slug: 'tokyo', latitude: 35.6762, longitude: 139.6503 },
   { country: '韓国', city: 'ソウル', slug: 'seoul', latitude: 37.5665, longitude: 126.9780 },
   { country: '台湾', city: '台北', slug: 'taipei', latitude: 25.0330, longitude: 121.5654 },
